@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
-    get "homes/about" => "homes#about", as: "about"
+    get "/about" => "homes#about", as: "about"
     resource :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     resources :orders, only: [:new, :confirm, :create, :complete, :index, :show]
     resources :items, only: [:index, :show]
