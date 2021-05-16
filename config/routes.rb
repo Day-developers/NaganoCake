@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :customers
   namespace :admin do
     root to: "homes#top"
     resources :customers,only: [:index, :show, :edit, :update]
