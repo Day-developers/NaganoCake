@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 px-sm-0">
+      <h2>商品一覧(全<%= @items.count %>件)</h2>
+    </div>
+  </div>
+  <div class="row">
+    <% @items.each do |item|%>
+    <div class ="item-image">
+      <%= link_to item_path(item) do %>
+        <a class="img"><%= attachment_image_tag item, :image, width: "100%", format: "jpeg", fallback: "no_image.jpg" %></p>
+      <% end %>
+    </div>
+    <div class="item-details">
+      <p class="item-name"><%= item.name %></p>
+      <%# if item.sales_status == true %>
+        <p class="item-price"><%= item.price %>円(税抜き)</p>
+      <%# else %>
+        <!--<p class="text-danger font-weight-bold">Sold out</p>-->
+      <%# end %>
+    </div>
+    <% end %>
+  </div>
+</div>
+  <%#= paginate @items, class:"text-center" %>
