@@ -1,3 +1,38 @@
-<h1>トップページ</h1>
-
-<%= link_to "logout", destroy_admin_session_path, method: :delete %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 px-sm-0">
+      <h3>注文履歴一覧</h3>
+      <table class="table">
+        <thead class=" table-hover table-inverse table-active">
+          <tr>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- @orders.each do |order| -->
+          <tr>
+            <td>
+              <!-- link_to admin_order_path(order) do -->
+                <!-- order.create_at -->
+              <!-- end -->
+            </td>
+            <td>
+               <!-- order.last_name --><!-- order.first_name -->
+            </td>
+            <td>
+              <!-- order.order_items.count -->
+            </td>
+            <td>
+              <!-- order.status -->
+            </td>
+          </tr>
+          <!-- end -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!--<div class="text-center">< paginate(@orders) ></div>-->
