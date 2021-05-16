@@ -14,3 +14,24 @@
  *= require_self
  */
  @import "bootstrap";
+
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box
+ }
+
+ .top-img {
+  background-image: url(no_image.jpg);
+  background-size: cover;
+  background-position: center;
+  width: 800px;
+  height: 300px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+ }
+
+ .text-box {
+   width: 500px;
+   height: 300px;
+ }
