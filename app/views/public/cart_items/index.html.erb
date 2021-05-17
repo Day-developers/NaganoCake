@@ -33,7 +33,7 @@
           <% @cart_item.each do |cart_item| %>
           <tr>
             <td class="align-middle"><%= attachment_image_tag cart_item.item, :image, :fill, 30, 30, format: "jpeg", fallback: "no_image.jpg", size: "30X30" %></td>
-            <td class="align-middle"><%= cart_item.item.add_tax_sales_price.to_s(:dalimited) %>円(税抜き)</td>
+            <td class="align-middle"><%= cart_item.item.add_tax_price.to_s(:dalimited) %>円(税込)</td>
             <td class="align-middle">
               <%= form_with model: cart_item, local: true do |f| %>
               <%= form.number_field :number, min: 1, max: 100 %>
