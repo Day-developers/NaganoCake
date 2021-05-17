@@ -3,6 +3,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
+    @items = Item.all.page(params[:page]).reverse_order
   end
 
   def show
