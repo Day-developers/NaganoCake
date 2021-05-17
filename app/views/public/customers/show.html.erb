@@ -1,0 +1,41 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-sm-12">
+      <h2>マイページ</h2>
+      <h4><strong>登録情報</strong></h4>
+      <%= link_to "編集する", edit_customers_path, class: "btn btn-success" %>
+      
+      <table class = "table table-bordered">
+        <tbody>
+          <tr>
+            <td class = "info">氏名</td>
+            <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+          </tr>
+          <tr>
+            <td class = "info">カナ</td>
+            <td><%= @customer.kana_last_name %> <%= @customer.kana_first_name %></td>
+          </tr>
+          <tr>
+            <td class = "info">郵便番号</td>
+            <td><%= @customer.postal_code %></td>
+          </tr>
+          <tr>
+            <td class = "info">電話番号</td>
+            <td><%= @customer.phone_number %></td>
+          </tr>
+          <tr>
+            <td class = "info">メールアドレス</td>
+            <td><%= @customer.email %></td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <h4><strong>配送先</strong></h4>
+      <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %><br />
+      
+      <h4><strong>注文履歴</strong></h4>
+      <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
+      
+    </div>
+  </div>
+</div>
