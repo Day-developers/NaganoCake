@@ -13,13 +13,14 @@
     </div>
     <div class="item-details">
       <p class="item-name"><%= item.name %></p>
-      <%# if item.sales_status == true %>
+      <% if item.sales_status == true %>
         <p class="item-price"><%= item.price %>円(税抜き)</p>
-      <%# else %>
-        <!--<p class="text-danger font-weight-bold">Sold out</p>-->
-      <%# end %>
+      <% else %>
+        <p class="text-danger font-weight-bold">Sold out</p>
+      <% end %>
     </div>
+     <%= paginate item, class:"text-center" %>
     <% end %>
   </div>
 </div>
-  <%#= paginate @items, class:"text-center" %>
+ >
