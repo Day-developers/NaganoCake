@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :customers
+
   namespace :admin do
     root to: "homes#top"
     resources :customers,only: [:index, :show, :edit, :update]
@@ -22,6 +22,12 @@ Rails.application.routes.draw do
 
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
+  }
+  
+  devise_for :customers, controllers: {
+    sessions: "public/sessions",
+    passwords: "public/passwords",
+    registrations: "public/registrations"
   }
 
 end
