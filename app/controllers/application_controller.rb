@@ -1,12 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  # ログイン後及びログアウト後の遷移先(顧客側は保留)
   def after_sign_in_path_for(resource)
-    case resource
-    when Admin
+    if resource == :admin
       admin_root_path
-    when Customer
+    else
       root_path
     end
   end
