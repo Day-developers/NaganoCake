@@ -1,2 +1,69 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>ショッピングカート</h2>
+    </div>
+    <div class="col-md-2.offset-md-2">
+      <% unless @cart_item.empty? %>
+      <%= link_to "カートを空にする", "#", class: "btn btn-danger", id: "all-delete", method: :delete, data: { confirm: '削除しますか？' } %>
+      <% end %>
+    </div>
+  </div>
+
+  <% if @cart_item.empty? %>
+    <div class="text-center">
+      <h2>カートに商品が入っておりません</h2>
+      <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
+    </div>
+  <% else %>
+  <div class="row">
+    <div class="col-md-10">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="table-active" style="width: 40%">商品名</th>
+            <th scope="table-active" style="width: 15%">単価（税込み）</th>
+            <th scope="table-active" style="width: 15%">数量</th>
+            <th scope="table-active" style="width: 15%">小計</th>
+            <th scope="table-active" style="width: 15%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @total_amount = 0 %>
+          <% @cart_item.each do |cart_item| %>
+          <tr>
+            <td class="align-middle"><%= attachment_image_tag cart_item.item, :image, :fill, 30, 30, format: "jpeg", fallback: "no_image.jpg", size: "30X30" %></td>
+            <td class="align-middle"><%= cart_item.item.add_tax_price.to_s(:dalimited) %>円(税込)</td>
+            <td class="align-middle">
+              <%= form_with model: cart_item, local: true do |f| %>
+              <%= form.number_field :number, min: 1, max: 100 %>
+              <%= f.submit "変更", class: "btn btn-success" %>
+              <% end %>
+            </td>
+            <td class="align-middle"><%= (amount = cart_item.item.add_tax_sales_price * cart_item.number).to_s(:delimited) %></td>
+            <td><%= link_to "削除する", cart_items_path(cart_item), class: "btn btn-danger", id: "all-delete", method: :delete, data: { confirm: '削除しますか？' } %></td>
+            <% end %>
+          </tr>
+          <% @total_amount += amount %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
+      </div>
+      <div class="col-sm-3 px-sm-0">
+        <table class="table table-bordered">
+          <tr>
+            <th class="table-active" style="width:50%">合計金額</th><td style="width:50%"><%= @total_amount.to_s(:delimited) %></td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <%= link_to "情報入力へ進む", new_order_path, class: "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+</div>
