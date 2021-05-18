@@ -13,14 +13,10 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "/about" => "homes#about", as: "about"
-    get "/customers/my_page" => "customers#show"
-    get "/customers/unsubscribe" => "customers#unsubscribe"
-    patch "/customers/withdraw" => "customers#/withdraw"
-    delete "/cart_items/destroy_all" => "cart_items#destroy_all"
-    resource :customers, only: [:edit, :update]
+    resource :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     resources :orders, only: [:new, :confirm, :create, :complete, :index, :show]
     resources :items, only: [:index, :show]
-    resources :cart_items, only: [:index, :create, :update, :destroy]
+    resources :cart_items, only: [:index, :create, :update, :destroy, :destroy_all]
     resources :addresses, only: [:index, :create, :destroy, :edit, :update]
   end
 
