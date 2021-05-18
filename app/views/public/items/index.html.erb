@@ -1,25 +1,29 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 px-sm-0">
-      <h2>商品一覧(全<%= @items.count %>件)</h2>
+      <h2>商品一覧(全<%= @items.total_count %>件)</h2>
     </div>
   </div>
   <div class="row">
-    <% @items.each do |item|%>
-    <div class ="item-image">
-      <%= link_to item_path(item) do %>
-        <a class="img"><%= attachment_image_tag item, :image, width: "100%", format: "jpeg", fallback: "no_image.jpg" %></p>
+    <div class="d-flex flex-wrap">
+      <% @items.each do |item|%>
+      <div class="card mb-5", style="width:25%">
+        <div class ="item-image">
+          <%= link_to item_path(item) do %>
+            <p class="img card-img-top"><%= attachment_image_tag item, :image, width: "100%", format: "jpeg", fallback: "no_image.jpg" %></p>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <p class="card-title"><%= item.name %></p>
+          <% if item.is_active == true %>
+            <p class="item-price"><%= ((item.price*1.10).to_i).to_s(:delimited) %>円(税込）%></p>
+          <% else %>
+            <p class="text-danger font-weight-bold">Sold out</p>
+          <% end %>
+        </div>
+      </div>
       <% end %>
     </div>
-    <div class="item-details">
-      <p class="item-name"><%= item.name %></p>
-      <%# if item.sales_status == true %>
-        <p class="item-price"><%= item.price %>円(税抜き)</p>
-      <%# else %>
-        <!--<p class="text-danger font-weight-bold">Sold out</p>-->
-      <%# end %>
-    </div>
-    <% end %>
   </div>
+  <%= paginate @items, class:"text-center" %>
 </div>
-  <%#= paginate @items, class:"text-center" %>

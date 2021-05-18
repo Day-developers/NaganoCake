@@ -1,21 +1,25 @@
-<div class="row">
-    <div class="col-md-3">
-      <a class="image"><%= attachment_image_tag item, :image, width: "100%", format: "jpeg", fallback: "no_image.jpg" %></p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <p class="image"><%= attachment_image_tag @item, :image, width: "100%", format: "jpeg", fallback: "no_image.jpg" %></p>
     </div>
-    <div class="col-md-8 offset-md-1">
-      <h2><%= @item.name %></h2>
-      <h3><%= @item.caption %></h3>
+    <div class="col-md-5 offset-md-1">
+      <h2 class="pb-3 font-weight-bold"><%= @item.name %></h2>
+      <h5><%= @item.caption %></h5>
       <br />
-      <h3><%= @item.add_tax_price.to_s %></h3><p>（税込）</p>
+      <h4><%= ((@item.price*1.10).to_i).to_s(:delimited) %>円（税込)</h4>
       <% if @item.is_active == false %>
         <p class="text-danger font-weight-bold">Sold out</p>
-      <% elsif customer_sign_in? %>
-        <%= form_with url: cart_items_path, model: @item, local: true) do |f| %>
-          <%= f.select :number, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]], {include_blank: '個数選択'}, class: "form-control" %>
-          <%= f.submit 'カートに入れる', class: 'btn btn-success btn-block' %>
-        <% end %>
       <% else %>
-        <p class="text-danger font-weight-bold">購入するにはログインが必要です</p>
+        <% if customer_signed_in? %>
+          <%= form_with model: @cart_item, local: true do |f| %>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+            <%= f.select :number, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], {include_blank: '個数選択'}, class: "mb-3" %>
+            <%= f.submit 'カートに入れる', class: 'btn btn-success btn-block w-35' %>
+          <% end %>
+        <% else %>
+          <p class="text-danger font-weight-bold">購入するにはログインが必要です</p>
+        <% end %>
       <% end %>
     </div>
   </div>
