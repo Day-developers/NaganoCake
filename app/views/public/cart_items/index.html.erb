@@ -33,18 +33,18 @@
           <% @cart_item.each do |cart_item| %>
           <tr>
             <td class="align-middle"><%= attachment_image_tag cart_item.item, :image, :fill, 30, 30, format: "jpeg", fallback: "no_image.jpg", size: "30X30" %></td>
-            <td class="align-middle"><%= cart_item.item.add_tax_price.to_s(:dalimited) %>円(税込)</td>
+            <td class="align-middle"><%#= ((cart_item.item.price*1.10).to_i).to_s(:delimited) %>円（税込）</td>
             <td class="align-middle">
               <%= form_with model: cart_item, local: true do |f| %>
-              <%= form.number_field :number, min: 1, max: 100 %>
-              <%= f.submit "変更", class: "btn btn-success" %>
+                <%= f.number_field :number, min: 1, max: 100 %>
+                <%= f.submit "変更", class: "btn btn-success" %>
               <% end %>
             </td>
-            <td class="align-middle"><%= (amount = cart_item.item.add_tax_sales_price * cart_item.number).to_s(:delimited) %></td>
+            <td class="align-middle"><%#= (amount = (cart_item.item.price*1.10*cart_item.number).to_i).to_s(:delimited) %></td>
             <td><%= link_to "削除する", cart_items_path(cart_item), class: "btn btn-danger", id: "all-delete", method: :delete, data: { confirm: '削除しますか？' } %></td>
-            <% end %>
+          <% end %>
           </tr>
-          <% @total_amount += amount %>
+          <%# @total_amount +=  %>
         </tbody>
       </table>
       </div>
@@ -56,7 +56,8 @@
       <div class="col-sm-3 px-sm-0">
         <table class="table table-bordered">
           <tr>
-            <th class="table-active" style="width:50%">合計金額</th><td style="width:50%"><%= @total_amount.to_s(:delimited) %></td></tr>
+            <th class="table-active" style="width:50%">合計金額</th><td style="width:50%"><%= @total_amount.to_s(:delimited) %></td>
+          </tr>
         </table>
       </div>
     </div>

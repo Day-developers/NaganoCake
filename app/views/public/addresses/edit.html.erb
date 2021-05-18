@@ -1,0 +1,25 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-sm-12">
+      <h4>配送先編集</h4>
+      <%= form_with model: @address, url: address_path(@address.id), local:true do |f| %>
+      
+      <div class = "field">
+        <%= f.label "郵便番号(ハイフンなし)", class: "col-3" %>
+        <%= f.text_field :postal_code, autocomplete: "postal_code", placeholder: "0000000", class: "col-3" %>
+      </div>
+      
+      <div class = "field">
+        <%= f.label "住所", class: "col-3" %>
+        <%= f.text_field :address, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0", class: "col-6" %>
+      </div>
+      
+      <div class = "field">
+        <%= f.label "宛名", class: "col-3" %>
+        <%= f.text_field :name, autocomplete: "name", placeholder: "令和道子", class: "col-3 mr-5" %>
+        <%= f.submit "変更内容を保存", class: "btn btn-sm btn-success ml-3" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

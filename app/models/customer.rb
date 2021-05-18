@@ -12,9 +12,12 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true, length: {is: 7}, numericality: { only_integer: true }
   validates :phone_number, presence: true, format: { with: VALID_PHONE_NUMBER_REGEX }
   
+  has_many :addresses, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
+  has_many :orders, dependent: :destroy
+    
   def active_for_authentication?
     super && (self.is_deleted == false)
   end
-
   
 end
