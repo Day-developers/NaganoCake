@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    if resource == :admin
+    if resource.class.name == "Admin"
       admin_root_path
     else
       root_path
@@ -15,6 +15,12 @@ class ApplicationController < ActionController::Base
     else
       root_path
     end
+  end
+
+  before_action :authenticate_admin!, if: :admin_url
+
+  def admin_url
+    request.fullpath.include?("/admin")
   end
 
   protected
