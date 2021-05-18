@@ -2,8 +2,12 @@
   <div class="row">
     <div class="col-sm-10 px-sm-0">
       <h3>商品一覧</h3>
-      <%= link_to new_admin_item_path %>
-        新規商品登録
+      <%= link_to new_admin_item_path do %>
+        <div class="text-right py-3">
+          <button type="button" class="btn btn-success ">
+            新規登録
+          </button>
+        </div>
       <% end %>
       <table class="table">
         <thead class=" table-hover table-inverse table-active">
@@ -22,7 +26,7 @@
               <%= item.id %>
             </td>
             <td>
-              <%= link_to admin_items_path(item) do %>
+              <%= link_to admin_item_path(item.id) do %>
                 <%= item.name %>
               <% end %>
             </td>
@@ -35,8 +39,8 @@
             <td>
               <% if item.is_active == true %>
                 <p>販売中</p>
-              <% else items.is_active == false %>
-                <p>販売停止</p>
+              <% else  %>
+                <p>販売停止中</p>
               <% end %>
             </td>
           </tr>

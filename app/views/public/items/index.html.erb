@@ -8,7 +8,7 @@
     <% @items.each do |item|%>
     <div class ="item-image">
       <%= link_to item_path(item) do %>
-        <a class="img"><%= attachment_image_tag item, :image, width: "100%", format: "jpeg", fallback: "no_image.jpg" %></p>
+        <p class="img"><%= attachment_image_tag item, :image, width: "100%", format: "jpeg", fallback: "no_image.jpg" %></p>
       <% end %>
     </div>
     <div class="item-details">
