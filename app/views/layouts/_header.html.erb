@@ -1,54 +1,54 @@
-<header>
+<header class="border-bottom border-dark mb-5">
   <nav class="navbar navbar-expand-lg p-5">
     <div class="container">
       <a class="navbar-brand" href="/"><span>ながのCAKE</span></a>
       <nav>
         <ul class="navbar-nav mr-auto">
           <% if customer_signed_in? %>
-            <li>
+            <li  class="my-auto">
               ようこそ、<%= current_customer.last_name %>さん！
             </li>
-            <button type="button" class="btn btn-outline-light">
-              <%= link_to "マイページ", customers_my_page_path %>
-            </button>
-            <button type="button" class="btn btn-outline-light">
-              <%= link_to "商品一覧", items_path %>
-              </button>
-            <button type="button" class="btn btn-outline-light">
-              <%= link_to "カート", cart_items_path %>
-            </button>
-            <button type="button" class="btn btn-outline-light">
-              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-            </button>
+            <p class="btn btn-outline-secondary mx-3 my-auto">
+              <%= link_to "マイページ", customers_my_page_path, class: "nav-link" %>
+            </p>
+            <p class="btn btn-outline-secondary mx-3 my-auto">
+              <%= link_to "商品一覧", items_path, class: "nav-link" %>
+              <p>
+            <p class="btn btn-outline-secondary mx-3 my-auto">
+              <%= link_to "カート", cart_items_path, class: "nav-link" %>
+            </p>
+            <p class="btn btn-outline-secondary mx-3 my-auto">
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
+            </p>
           <% elsif admin_signed_in? %>
-            <button type="button" class="btn btn-outline-light">
-              <%= link_to "商品一覧", admin_items_path %>
-            </button>
-            <button type="button" class="btn btn-outline-light">
-              <%= link_to "会員一覧", admin_customers_path %>
-            </button>
-            <button type="button" class="btn btn-outline-light">
-              <%= link_to "注文履歴一覧", admin_root_path %>
-            </button>
-            <button type="button" class="btn btn-outline-light">
-              <%= link_to "ジャンル一覧", admin_genres_path %>
-            </button>
-            <button type="button" class="btn btn-outline-light">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-            </button>
+            <p class="btn btn-outline-secondary mx-3 my-auto">
+              <%= link_to "商品一覧", admin_items_path, class: "nav-link" %>
+            </p>
+            <p class="btn btn-outline-secondary mx-3 my-auto">
+              <%= link_to "会員一覧", admin_customers_path, class: "nav-link" %>
+            </p>
+            <p class="btn btn-outline-secondary mx-3 my-auto">
+              <%= link_to "注文履歴一覧", admin_root_path, class: "nav-link" %>
+            </p>
+            <p class="btn btn-outline-secondary mx-3 my-auto">
+              <%= link_to "ジャンル一覧", admin_genres_path, class: "nav-link" %>
+            </p>
+            <p class="btn btn-outline-secondary mx-3 my-auto">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+            </p>
           <% else %>
-            <button type="button" class="btn btn-outline-light">
-              <%= link_to "About", about_path %>
-            </button>
-            <button type="button" class="btn btn-outline-light">
-              <%= link_to "商品一覧", items_path %>
-            </button>
-            <button type="button" class="btn btn-outline-light">
+            <p class="btn btn-outline-secondary mx-3 my-auto">
+              <%= link_to "About", about_path, class: "nav-link" %>
+            </p>
+            <p class="btn btn-outline-secondary mx-3 my-auto">
+              <%= link_to "商品一覧", items_path, class: "nav-link" %>
+            </p>
+            <p class="btn btn-outline-secondary mx-3 my-auto">
               <%= link_to "新規登録", new_customer_registration_path %>
-            </button>
-            <button type="button" class="btn btn-outline-light">
-              <%= link_to "ログイン", new_customer_session_path %>
-            </button>
+            </p>
+            <p class="btn btn-outline-secondary mx-3 my-auto">
+              <%= link_to "ログイン", new_customer_session_path, class: "nav-link" %>
+            </p>
           <% end %>
         </ul>
       </nav>
