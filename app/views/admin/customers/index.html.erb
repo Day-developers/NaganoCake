@@ -12,7 +12,6 @@
             <th>ステータス</th>
           </tr>
         </thead>
-
         <tbody>
           <% @customers.each do |customer| %>
           <tr>
@@ -34,7 +33,6 @@
           <% end %>
         </tbody>
       </table>
-
     </div>
   </div>
   <%= paginate @customers, class: "text-center" %>
