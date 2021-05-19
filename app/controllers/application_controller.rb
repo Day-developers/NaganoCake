@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
     if resource.class.name == "Admin"
       admin_root_path
     else
+      flash[:success] = "Welcome！Nagano CAKE！"
       root_path
     end
   end
@@ -13,6 +14,7 @@ class ApplicationController < ActionController::Base
     if resource == :admin
       new_admin_session_path
     else
+      flash[:success] = "ログアウトしました"
       root_path
     end
   end
