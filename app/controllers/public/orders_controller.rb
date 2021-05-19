@@ -17,7 +17,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
-    
+  end
+
   def index
     @orders = current_customer.orders
   end
