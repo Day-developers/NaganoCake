@@ -16,7 +16,7 @@
         <div class="card-body">
           <p class="card-title"><%= item.name %></p>
           <% if item.is_active == true %>
-            <p class="item-price"><%= ((item.price*1.10).to_i).to_s(:delimited) %>円(税込）%></p>
+            <p class="item-price"><%= ((item.price*1.10).to_i).to_s(:delimited) %>円(税込）</p>
           <% else %>
             <p class="text-danger font-weight-bold">Sold out</p>
           <% end %>
