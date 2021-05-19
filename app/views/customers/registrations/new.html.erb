@@ -1,66 +1,67 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-sm-12">
-      <h4>新規会員登録</h4>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <div class = "col-sm-12 px-sm-0">
+      <h4 class = "offset-sm-1">新規会員登録</h4>
+      <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local:true do |f| %>
       　<%= render "customers/shared/error_messages", resource: resource %>
       　
       　<div class = "field">
-      　  <%= f.label "名前", class: "col-3" %>
-      　  <%= f.text_field :last_name, autocomplete: "last_name", placeholder: "令和", class: "col-3" %>
-      　  <%= f.text_field :first_name, autocomplete: "first_name", placeholder: "道子", class: "col-3" %>
+      　   <%= f.label "名前", class: "col-3" %>
+      　   <%= f.text_field :last_name, autocomplete: "last_name", placeholder: "令和", class: "col-3" %>
+      　   <%= f.text_field :first_name, autocomplete: "first_name", placeholder: "道子", class: "col-3" %>
       　</div>
       　
       　<div class = "field">
-      　  <%= f.label "フリガナ", class: "col-3" %>
-      　 <%= f.text_field :kana_last_name, autocomplete: "kana_last_name", placeholder: "レイワ", class: "col-3" %>
-      　 <%= f.text_field :kana_first_name, autocomplete: "kana_first_name", placeholder: "ミチコ", class: "col-3" %>
+      　   <%= f.label "フリガナ", class: "col-3" %>
+       　  <%= f.text_field :kana_last_name, autocomplete: "kana_last_name", placeholder: "レイワ", class: "col-3" %>
+       　  <%= f.text_field :kana_first_name, autocomplete: "kana_first_name", placeholder: "ミチコ", class: "col-3" %>
       　</div>
 
       　<div class = "field">
-      　  <%= f.label "メールアドレス", class: "col-3" %>
-      　  <%= f.text_field :email, autocomplete: "email", placeholder: "example@example.com", class: "col-3" %>
+       　  <%= f.label "メールアドレス", class: "col-3" %>
+       　  <%= f.text_field :email, autocomplete: "email", placeholder: "example@example.com", class: "col-3" %>
       　</div>
 
       　<div class = "field ">
-      　  <%= f.label "郵便番号(ハイフンなし)", class: "col-3" %>
-      　  <%= f.text_field :postal_code, autocomplete: "postal_code", placeholder: "0000000", class: "col-3" %>
+       　  <%= f.label "郵便番号(ハイフンなし)", class: "col-3" %>
+       　  <%= f.text_field :postal_code, autocomplete: "postal_code", placeholder: "0000000", class: "col-3" %>
       　</div>
 
       　<div class = "field">
-      　  <%= f.label "住所", class: "col-3" %>
-      　  <%= f.text_field :address, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0", class: "col-6" %>
+       　  <%= f.label "住所", class: "col-3" %>
+       　  <%= f.text_field :address, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0", class: "col-6" %>
       　</div>
 
       　<div class = "field">
-      　  <%= f.label "電話番号(ハイフンなし)", class: "col-3" %>
-      　  <%= f.text_field :phone_number, autocomplete: "phone_number", placeholder: "0000000000", class: "col-3" %>
+       　  <%= f.label "電話番号(ハイフンなし)", class: "col-3" %>
+       　  <%= f.text_field :phone_number, autocomplete: "phone_number", placeholder: "0000000000", class: "col-3" %>
       　</div>
 
       　<div class = "field">
-      　  <%= f.label "パスワード(6文字以上)", class: "col-3" %>
-      　  <%= f.text_field :password, autocomplete: "new-password", class: "col-3" %>
+       　  <%= f.label "パスワード(6文字以上)", class: "col-3" %>
+       　  <%= f.password_field :password, autocomplete: "new-password", class: "col-3" %>
       　</div>
 
       　<div class = "field">
-      　  <%= f.label "パスワード(確認用)", class: "col-3" %>
-      　  <%= f.text_field :password_confirmation, autocomplete: "new-password", class: "col-3" %>
+       　  <%= f.label "パスワード(確認用)", class: "col-3" %>
+       　  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-3" %>
       　</div>
       　
-      　<div class = "actions">
-      　  <%= f.submit "新規登録", class: "btn btn-sm btn-success col-3" %>
+      　<div class = "actions offset-sm-3">
+      　   <%= f.submit "新規登録", class: "btn btn-success col-5" %>
       　</div>
       <% end %>
       
-      <div class = "mt-2">
+      <div class = "offset-sm-1 mt-2">
         <h4>既に登録済みの方</h4>
-        <%= link_to "こちら", new_customer_session_path %> からログインしてください。
+        <div class = "pl-5">
+          <%= link_to "こちら", new_customer_session_path %> からログインしてください。
+        </div>
       </div>
-      　</table>
-      　
     </div>
   </div>
 </div>
+
 
 
 

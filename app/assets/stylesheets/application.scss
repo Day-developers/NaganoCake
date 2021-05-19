@@ -22,9 +22,10 @@
  }
 
  .top-img {
-  background-image: url(no_image.jpg);
-  background-size: cover;
+  background-image: url(top_page.jpg);
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
   width: 800px;
   height: 300px;
   margin-top: 50px;
@@ -35,3 +36,12 @@
    width: 500px;
    height: 300px;
  }
+
+.nav-link {
+ list-style: none;
+ color: black;
+}
+
+.nav-link:hover {
+ color: white;
+}

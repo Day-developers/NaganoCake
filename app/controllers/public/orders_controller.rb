@@ -6,12 +6,6 @@ class Public::OrdersController < ApplicationController
     @addresses = Address.all
   end
 
-  def index
-  end
-
-  def show
-  end
-
   def confirm
     @cart_items = current_customer.cart_items
     @order = Order.new
@@ -23,5 +17,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
+    
+  def index
+    @orders = current_customer.orders
+  end
+
+  def show
+    @order=Order.find(params[:id])
   end
 end
