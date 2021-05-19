@@ -1,2 +1,64 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
+<div class="container">
+  <h2>注文情報確認</h2>
+  <div class="row">
+    <div class="col-xs-9">
+
+      <table class="table table-bordered border-dark">
+        <thead>
+          <tr class="info">
+            <th class="table-active border border-dark">商品名</th>
+            <th class="table-active border border-dark">単価（税込）</th>
+            <th class="table-active border border-dark">数量</th>
+            <th class="table-active border border-dark">小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart| %>
+          <tr>
+            <td class="text-left">
+              <%= attachment_image_tag(cart.item, :image, size: "60x50", fallback: "no_image.jpg") %>
+              <strong><%= cart.item.name %></strong>
+            </td>
+            <td class="text-left">
+              <%= tax_price(cart.item.price).to_s(:delimited) %></p>
+            </td>
+            <td class="text-left">
+              <%= cart.number %>
+            </td>
+            <td class="text-left">
+              ¥<%= price(cart).to_s(:delimited) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-xs-3 billing">
+      <table class="table table-bordered border-dark">
+        <tr>
+          <th class="table-active border border-dark">送料</th>
+          <td class="text-right col-xs-5"><%= @order.shipping_fee %></td>
+        </tr>
+        <tr>
+          <th class="table-active border border-dark">商品合計</th>
+          <td class="text-right"></td>
+        </tr>
+        <tr>
+          <th class="table-active border border-dark">請求金額</th>
+          <td class="text-right"><%= @order.payment_amount %></td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <strong>支払方法</strong>
+      <span class="pl-3">
+        <%= @order.payment_method %>
+      </span>
+      </div>
+      <strong>お届け先</strong>
+      <span class="pl-3">
+        〒<%= "#{@order.postal_code}" %>&nbsp<%= "#{@order.address}" %>&nbsp<%= "#{@order.name}" %>
+      </span>
+    </div>
+  </div>
+</div>

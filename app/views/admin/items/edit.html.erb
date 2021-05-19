@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-10 px-sm-0">
       <h3 class="mb-5">商品編集</h3>
-        <%= form_with model: [:admin, @item], url: admin_item_path, local: true do |f| %>
+        <%= form_with model: [:admin, @item], local: true do |f| %>
           <%= render 'form_item', f: f %>
           <%= f.submit '編集する', class: "btn btn-success btn-lg pull-right" %>
         <% end %>
