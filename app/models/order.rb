@@ -9,4 +9,20 @@ class Order < ApplicationRecord
   validates :postal_code, presence: true, length: {is: 7}, numericality: { only_integer: true }
   validates :shipping_fee, :payment_amount, numericality: { only_integer: true }
 
+  def tax_price
+    (self.price * 1.10).round
+  end
+
+  def sub_prise
+    (self.price * 1.10) * self.order_item.number
+  end
+
+  def total_price
+    array = []
+    self.order_items.each do |order_item|
+       array << order_item.price * order_item.number
+   end
+    array.sum
+  end
+
 end
