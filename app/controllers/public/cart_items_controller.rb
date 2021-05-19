@@ -6,20 +6,21 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    if @cart_item.blank?
-      @cart_item = CartItem.new(cart_item_params)
-      @cart_item.customer_id = current_customer.id
-      @cart_item.save
+    @cart_items = CartItem.find_by(customer_id: current_customer.id, item_id: params[:cart_item][:item_id])
+    if @cart_items.present?
+      @cart_items.number += params[:cart_item][:number].to_i
+      @cart_items.save
+      flash[:success] = "カートに追加しました"
       redirect_to cart_items_path
     else
-      @cart_item = current_customer.cart_item.find_by(item_id: params[:cart_item][:item_id])
-      @cart_item.number += params[:number].to_i
+      @cart_item = CartItem.new(cart_item_params)
+      @cart_item.customer_id = current_customer.id
       if @cart_item.save
         flash[:success] = "カートに追加しました"
         redirect_to cart_items_path
       else
         flash[:danger] = "エラーが発生しました"
-        redirect_to request.referer
+        redirect_to item_path(@cart_item.item)
       end
     end
   end

@@ -33,18 +33,18 @@
           <% @cart_item.each do |cart_item| %>
           <tr>
             <td class="align-middle"><%= attachment_image_tag cart_item.item, :image, width: "50%", format: "jpeg", fallback: "no_image.jpg" %></td>
-            <td class="align-middle"><%= ((cart_item.item.price*1.10).to_i).to_s(:delimited) %>円（税込）</td>
+            <td class="align-middle"><%= (cart_item.item_price_with_tax).to_s(:delimited) %>円（税込）</td>
             <td class="align-middle">
               <%= form_with model: cart_item, local: true do |f| %>
                 <%= f.number_field :number, min: 1, max: 100 %>
                 <%= f.submit "変更", class: "btn btn-success" %>
               <% end %>
             </td>
-            <td class="align-middle"><%#= ((cart_item.item.price*1.10*cart_item.number).to_i).to_s(:delimited)} %></td>
+            <td class="align-middle"><%= (cart_item.sum).to_s(:delimited) %>円</td>
             <td class="align-middle"><%= link_to "削除する", cart_item_path(cart_item), class: "btn btn-danger", id: "delete", method: :delete, data: { confirm: '削除しますか？' } %></td>
+          <% @total_amount += cart_item.sum  %>
           <% end %>
           </tr>
-          <%# @total_amount += amount  %>
         </tbody>
       </table>
       </div>
@@ -56,7 +56,7 @@
       <div class="col-sm-3 px-sm-0">
         <table class="table table-bordered">
           <tr>
-            <th class="table-active" style="width:50%">合計金額</th><td style="width:50%"><%= @total_amount.to_s(:delimited) %></td>
+            <td class="table-active" style="width:50%">合計金額</th><td style="width:50%"><%= @total_amount.to_s(:delimited) %>円</td>
           </tr>
         </table>
       </div>
