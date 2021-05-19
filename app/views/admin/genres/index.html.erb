@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-10 px-sm-0">
-      <h3>ジャンル一覧・追加</h3>
+      <h3 class="mb-5">ジャンル一覧・追加</h3>
 
-      <div>
+      <div class="mb-5">
         <p class="d-inline-block">ジャンル名</p>
         <%= form_with model: [:admin, @genre], class: "d-inline-block", local: true do |f| %>
           <%= f.text_field :name, placeholder: "ジャンル名", class: "mx-5" %>
@@ -11,7 +11,7 @@
         <% end %>
       </div>
 
-      <table class="table border-bottom">
+      <table class="table border-bottom col-5">
         <thead>
           <tr class="table-hover table-inverse table-active">
             <th>ジャンル</th>
@@ -23,7 +23,7 @@
           <% @genres.each do |genre| %>
           <tr>
             <td><%= genre.name %></td>
-            <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
+            <td style="width: 30%"><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
           </tr>
           <% end %>
         </tbody>
