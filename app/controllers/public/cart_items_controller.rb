@@ -19,7 +19,7 @@ class Public::CartItemsController < ApplicationController
         flash[:success] = "カートに追加しました"
         redirect_to cart_items_path
       else
-        flash[:danger] = "エラーが発生しました"
+        flash[:danger] = "正しい個数を入力してください"
         redirect_to item_path(@cart_item.item)
       end
     end
@@ -28,8 +28,8 @@ class Public::CartItemsController < ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
     if @cart_item.update(cart_item_params)
-  　   redirect_to cart_items_path
-  　else
+      redirect_to cart_items_path
+    else
       flash[:danger] = "正しい個数を入力してください"
       redirect_to request.referer
     end
@@ -45,7 +45,6 @@ class Public::CartItemsController < ApplicationController
   def destroy_all
    @cart_items = current_customer.cart_items.all
    @cart_items.destroy_all
-   flash[:success] = "カートの中身を空にしました"
    redirect_to cart_items_path
   end
 
