@@ -16,14 +16,14 @@
 
         <strong>お届け先</strong>
         <div class="col-xs-10 radio ml-3">
-          <%= f.radio_button :addresses, "residence", checked: true %>
+          <%= f.radio_button :addresses, "address", checked: true %>
           <span>ご自身の住所</span><br>
           &nbsp&nbsp〒<%= "#{current_customer.postal_code}" %>&nbsp<%= "#{current_customer.address}" %><br>
           &nbsp&nbsp<%= "#{current_customer.last_name}""#{current_customer.first_name}" %>
         </div>
 
         <div class="col-xs-10 radio ml-3">
-          <%= f.radio_button :addresses,  "registration"%>
+          <%= f.radio_button :addresses,  "addresses"%>
           <span>&nbsp登録済住所から選択</span><br>
           &nbsp&nbsp<%= f.collection_select(:addresses_id, @addresses, :id, :shipping_address) %>
         </div>
