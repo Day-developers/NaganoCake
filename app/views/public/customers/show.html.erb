@@ -1,10 +1,11 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-sm-12">
+      <p class = "text-success"><%= flash[:success] %></p>
       <h2>マイページ</h2>
       <h4><strong>登録情報</strong></h4>
       <%= link_to "編集する", edit_customers_path, class: "btn btn-success" %>
-      
+
       <table class = "table table-bordered">
         <tbody>
           <tr>
@@ -29,13 +30,13 @@
           </tr>
         </tbody>
       </table>
-      
+
       <h4><strong>配送先</strong></h4>
       <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %><br />
-      
+
       <h4><strong>注文履歴</strong></h4>
       <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
-      
+
     </div>
   </div>
 </div>
