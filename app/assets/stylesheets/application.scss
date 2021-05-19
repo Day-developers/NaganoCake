@@ -46,6 +46,17 @@
  color: white;
 }
 
-.radio:after {
- background-color: gray;
+html{
+ position: relative;
+ min-height: 100%;
+}
+
+body {
+  margin-bottom: 100px;
+}
+
+footer{
+ position: absolute;
+ bottom: 0;
+ width: 100%;
 }
