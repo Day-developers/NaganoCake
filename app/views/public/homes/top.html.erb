@@ -1,6 +1,6 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-sm-12 px-sm-0">
+    <div class = "col-sm-12 my-5">
       <p class = "text-success"><%= flash[:success] %></p>
       <div class = "mx-auto top-img">
         <div class = "mx-auto text-box">
@@ -12,7 +12,7 @@
           </p>
         </div>
       </div>
-      <h2><strong>新着商品</strong></h2>
+      <h2 class = "font-weight-bold mb-4">新着商品</h2>
       <%= render 'public/items/new_items', items: @items %>
       <p class = "text-right"><%= link_to "全ての商品を見る⇒", items_path , class: "text-dark" %></p>
     </div>

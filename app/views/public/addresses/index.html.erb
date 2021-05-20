@@ -1,12 +1,13 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-sm-12">
+    <div class = "col-sm-12 my-5">
       <p class = "text-success"><%= flash[:success] %></p>
-      <h4 class = "mb-4">配送先登録 / 一覧</h4>
+      <h2 class = "mb-4 font-weight-bold">配送先登録 / 一覧</h2>
       <%= form_with model: @address, url: addresses_path, local:true do |f| %>
+        <%= render 'layouts/error', obj: @address %>
 
       <div class = "field">
-        <%= f.label "郵便番号(ハイフンなし)", class: "col-3" %>
+        <%= f.label "郵便番号（ハイフンなし）", class: "col-3" %>
         <%= f.text_field :postal_code, autocomplete: "postal_code", placeholder: "0000000", class: "col-3" %>
       </div>
 
@@ -24,7 +25,7 @@
       
       <div class = "row">
         <table class = "table table-bordered col-sm-7 my-5">
-        <thead class = "table-active">
+        <thead class = "table-light">
           <tr >
             <th class = "border border-dark">郵便番号</th>
             <th class = "border border-dark">住所</th>
