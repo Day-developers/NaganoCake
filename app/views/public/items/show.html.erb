@@ -1,22 +1,22 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-5">
-      <p class="image"><%= attachment_image_tag @item, :image, width: "100%", format: "jpeg", fallback: "no_image.jpg" %></p>
+    <div class="col-sm-5 px-sm-0">
+      <p class="image mt-5 mb-5"><%= attachment_image_tag @item, :image, width: "100%", format: "jpeg", fallback: "no_image.jpg" %></p>
     </div>
-    <div class="col-md-5 offset-md-1">
-      <h2 class="pb-3 font-weight-bold"><%= @item.name %></h2>
+    <div class="col-sm-5 offset-sm-1 px-sm-0">
+      <h2 class="font-weight-bold mt-5 mb-3"><%= @item.name %></h2>
       <h5><%= @item.caption %></h5>
       <br />
-      <h4><%= ((@item.price*1.10).to_i).to_s(:delimited) %>円（税込)</h4>
+      <h4><%= ((@item.price*1.10).to_i).to_s(:delimited) %>円（税込）</h4>
       <% if @item.is_active == false %>
         <p class="text-danger font-weight-bold">Sold out</p>
       <% else %>
         <% if customer_signed_in? %>
           <%= form_with model: @cart_item, local: true do |f| %>
             <%= f.hidden_field :item_id, :value => @item.id %>
-            <%= f.select :number, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], {include_blank: '個数選択'}, class: "mb-3" %>
-            <p class="text-danger text-center"><%= flash[:danger] %></p>
-            <%= f.submit 'カートに入れる', class: 'btn btn-success btn-block w-35' %>
+            <%= f.select :number, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], {include_blank: '個数選択'},  class: "form-control-sm mb-3" %>
+            <p class="text-danger text-center font-weight-bold"><%= flash[:danger] %></p>
+            <%= f.submit 'カートに入れる', class: 'btn btn-success btn-block w-35 mb-3' %>
           <% end %>
         <% else %>
           <p class="text-danger font-weight-bold">購入するにはログインが必要です</p>

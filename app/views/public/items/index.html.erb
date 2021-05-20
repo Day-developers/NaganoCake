@@ -1,11 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 px-sm-0">
-      <h2>商品一覧(全<%= @items.total_count %>件)</h2>
+      <h2 class="mt-5 mb-3">商品一覧(全<%= @items.total_count %>件)</h2>
     </div>
   </div>
-
   <%= render 'public/items/new_items', items: @items %>
-
-  <%= paginate @items, class:"text-center" %>
+  <%= paginate @items %>
 </div>

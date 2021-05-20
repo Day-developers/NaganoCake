@@ -1,14 +1,14 @@
-<header class="border-bottom border-dark mb-5">
-  <nav class="navbar navbar-expand-lg">
-    <div class="container">
-      <a class="navbar-brand" href="/"><%= image_tag('logo.png') %></a>
+<header>
+  <div class="container">
+    <nav class="navbar navbar-expand-sm">
+      <a class="navbar-brand" href="/"><%= image_tag('logo1.png') %></a>
       <nav>
         <ul class="navbar-nav mr-auto">
           <% if customer_signed_in? %>
             <li  class="my-auto">
               ようこそ、<%= current_customer.last_name %>さん！
             </li>
-            <p class="btn btn-outline-secondary mx-3 my-auto">
+            <p class="btn btn-secondary mx-3 my-auto">
               <%= link_to "マイページ", customers_my_page_path, class: "nav-link" %>
             </p>
             <p class="btn btn-outline-secondary mx-3 my-auto">
@@ -52,6 +52,6 @@
           <% end %>
         </ul>
       </nav>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </header>
