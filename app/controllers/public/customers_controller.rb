@@ -12,6 +12,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
+      flash[:success] = "会員情報を更新しました"
       redirect_to customers_my_page_path
     else
       render 'edit'
@@ -26,6 +27,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     @customer.update(is_deleted: true)
     reset_session
+    flash[:success] = "退会処理が完了しました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
   end
 

@@ -1,38 +1,72 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-10 px-sm-0">
-      <h3>注文履歴一覧</h3>
-      <table class="table">
-        <thead class=" table-hover table-inverse table-active">
-          <tr>
-            <th>購入日時</th>
-            <th>購入者</th>
-            <th>注文個数</th>
-            <th>注文ステータス</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- @orders.each do |order| -->
-          <tr>
-            <td>
-              <!-- link_to admin_order_path(order) do -->
-                <!-- order.create_at -->
-              <!-- end -->
-            </td>
-            <td>
-               <!-- order.last_name --><!-- order.first_name -->
-            </td>
-            <td>
-              <!-- order.order_items.count -->
-            </td>
-            <td>
-              <!-- order.status -->
-            </td>
-          </tr>
-          <!-- end -->
-        </tbody>
-      </table>
+<% if params[:id] %> <!--if !User.nil?-->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10 px-sm-0">
+        <h3>注文履歴一覧</h3>
+        <table class="table">
+          <%= render 'admin/homes/index_header' %>
+            <% @order.each do |order| %>
+            <tr>
+              <td>
+                <%= link_to admin_order_path(order) do %>
+                  <%= l order.create_at %>
+                <% end %>
+              </td>
+              <td>
+                <%= order.last_name %> <% order.first_name %>
+              </td>
+              <td>
+                <% @sum = 0 %>
+                <% order.order_items.each do |order_item| %>
+                <% @sum += order_item.number %>
+                <% end %>
+                <%= @sum %>
+              </td>
+              <td>
+                <%= order.status %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
+    <%= paginate @order, class:"text-center" %>
   </div>
-</div>
-<!--<div class="text-center">< paginate(@orders) ></div>-->
+<% else %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10 px-sm-0">
+        <h3>注文履歴一覧</h3>
+        <table class="table">
+          <%= render 'admin/homes/index_header' %>
+          <tbody>
+            <% @orders.each do |order| %>
+            <tr>
+              <td>
+                <%= link_to admin_order_path(order) do %>
+                  <%= l order.create_at %>
+                <% end %>
+              </td>
+              <td>
+                <%= order.last_name %> <% order.first_name %>
+              </td>
+              <td>
+                <% @sum = 0 %>
+                <% order.order_items.each do |order_item| %>
+                <% @sum += order_item.number %>
+                <% end %>
+                <%= @sum %>
+              </td>
+              <td>
+                <%= order.status %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <%= paginate @orders, class:"text-center" %>
+  </div>
+<% end %>

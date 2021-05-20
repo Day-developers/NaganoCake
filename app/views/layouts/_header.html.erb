@@ -1,7 +1,7 @@
 <header class="border-bottom border-dark mb-5">
-  <nav class="navbar navbar-expand-lg p-5">
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand" href="/"><span>ながのCAKE</span></a>
+      <a class="navbar-brand" href="/"><%= image_tag('logo.png') %></a>
       <nav>
         <ul class="navbar-nav mr-auto">
           <% if customer_signed_in? %>
@@ -44,7 +44,7 @@
               <%= link_to "商品一覧", items_path, class: "nav-link" %>
             </p>
             <p class="btn btn-outline-secondary mx-3 my-auto">
-              <%= link_to "新規登録", new_customer_registration_path %>
+              <%= link_to "新規登録", new_customer_registration_path, class: "nav-link" %>
             </p>
             <p class="btn btn-outline-secondary mx-3 my-auto">
               <%= link_to "ログイン", new_customer_session_path, class: "nav-link" %>
