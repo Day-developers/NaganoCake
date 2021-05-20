@@ -1,20 +1,20 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-sm-12 px-sm-0">
-      <h4 class = "offset-sm-1">新規会員登録</h4>
+    <div class = "col-sm-12">
+      <h4 class = "offset-sm-1 mb-2">新規会員登録</h4>
       <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local:true do |f| %>
       　<%= render "customers/shared/error_messages", resource: resource %>
       　
       　<div class = "field">
       　   <%= f.label "名前", class: "col-3" %>
-      　   <%= f.text_field :last_name, autocomplete: "last_name", placeholder: "令和", class: "col-3" %>
-      　   <%= f.text_field :first_name, autocomplete: "first_name", placeholder: "道子", class: "col-3" %>
+      　   <%= f.text_field :last_name, autocomplete: "last_name", placeholder: "（姓）令和", class: "col-3" %>
+      　   <%= f.text_field :first_name, autocomplete: "first_name", placeholder: "（名）道子", class: "col-3" %>
       　</div>
       　
       　<div class = "field">
       　   <%= f.label "フリガナ", class: "col-3" %>
-       　  <%= f.text_field :kana_last_name, autocomplete: "kana_last_name", placeholder: "レイワ", class: "col-3" %>
-       　  <%= f.text_field :kana_first_name, autocomplete: "kana_first_name", placeholder: "ミチコ", class: "col-3" %>
+       　  <%= f.text_field :kana_last_name, autocomplete: "kana_last_name", placeholder: "（セイ）レイワ", class: "col-3" %>
+       　  <%= f.text_field :kana_first_name, autocomplete: "kana_first_name", placeholder: "（メイ）ミチコ", class: "col-3" %>
       　</div>
 
       　<div class = "field">
@@ -52,9 +52,9 @@
       　</div>
       <% end %>
       
-      <div class = "offset-sm-1 mt-2">
+      <div class = "offset-sm-1 mt-4">
         <h4>既に登録済みの方</h4>
-        <div class = "pl-5">
+        <div class = "ml-5 mt-3">
           <%= link_to "こちら", new_customer_session_path %> からログインしてください。
         </div>
       </div>
