@@ -1,7 +1,7 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-sm-12">
-      <h4>配送先編集</h4>
+      <h4 class = "mb-4">配送先編集</h4>
       <%= form_with model: @address, url: address_path(@address.id), local:true do |f| %>
       
       <div class = "field">
@@ -17,7 +17,7 @@
       <div class = "field">
         <%= f.label "宛名", class: "col-3" %>
         <%= f.text_field :name, autocomplete: "name", placeholder: "令和道子", class: "col-3 mr-5" %>
-        <%= f.submit "変更内容を保存", class: "btn btn-sm btn-success ml-3" %>
+        <%= f.submit "変更内容を保存", class: "btn btn-success ml-3" %>
       </div>
       <% end %>
     </div>

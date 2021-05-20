@@ -1,7 +1,7 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-sm-12">
-      <h4>配送先登録 / 一覧</h4>
+      <h4 class = "mb-4">配送先登録 / 一覧</h4>
       <%= form_with model: @address, url: addresses_path, local:true do |f| %>
 
       <div class = "field">
@@ -17,12 +17,13 @@
       <div class = "field">
         <%= f.label "宛名", class: "col-3" %>
         <%= f.text_field :name, autocomplete: "name", placeholder: "令和道子", class: "col-3 mr-5" %>
-        <%= f.submit "新規登録", class: "btn btn-sm btn-success col-2 ml-3" %>
+        <%= f.submit "新規登録", class: "btn btn-success col-2 ml-3" %>
       </div>
       <% end %>
-
-      <table class = "table table-bordered col-sm-7 my-5">
-        <thead class = "table-info">
+      
+      <div class = "row">
+        <table class = "table table-bordered col-sm-7 my-5">
+        <thead class = "table-active">
           <tr >
             <th class = "border border-dark">郵便番号</th>
             <th class = "border border-dark">住所</th>
@@ -44,6 +45,7 @@
           <% end %>
         </tbody>
       </table>
+      </div>
     </div>
   </div>
 </div>
