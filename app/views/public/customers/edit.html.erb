@@ -3,7 +3,7 @@
     <div class = "col-sm-12">
       <h4 class = "mb-4">会員編集情報</h4>
       <%= form_with model: @customer, url: customers_path ,local: true do |f| %>
-      
+        <%= render 'layouts/error', obj: @customer %>
       <div class = "field">
          <%= f.label "氏名", class: "col-3" %>
          <%= f.text_field :last_name, autocomplete: "last_name", placeholder: "令和", class: "col-3" %>

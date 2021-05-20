@@ -3,6 +3,7 @@
     <div class = "col-sm-12">
       <h4 class = "mb-4">配送先編集</h4>
       <%= form_with model: @address, url: address_path(@address.id), local:true do |f| %>
+        <%= render 'layouts/error', obj: @address %>
       
       <div class = "field">
         <%= f.label "郵便番号(ハイフンなし)", class: "col-3" %>
