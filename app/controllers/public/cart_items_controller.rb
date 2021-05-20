@@ -19,7 +19,7 @@ class Public::CartItemsController < ApplicationController
         flash[:success] = "カートに追加しました"
         redirect_to cart_items_path
       else
-        flash[:danger] = "正しい個数を入力してください"
+        flash[:danger] = "個数を入力してください"
         redirect_to item_path(@cart_item.item)
       end
     end

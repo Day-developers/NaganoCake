@@ -1,2 +1,96 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 px-sm-0 mx-auto">
+      <h3>注文履歴詳細</h2>
+
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td>購入者</td>
+            <td><%= @customer.last_name + @customer.first_name %></td>
+          </tr>
+
+          <tr>
+            <td>注文日</td>
+            <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+          </tr>
+
+          <tr>
+            <td>配送先</td>
+            <td>
+              〒<%= @order.postal_code %>
+              <%= @order.address %><br />
+              <%= @order.name %>
+            </td>
+          </tr>
+
+          <tr>
+            <td>支払方法</td>
+            <td><%= @order.payment_method %></td>
+          </tr>
+
+          <tr>
+            <td>注文ステータス</td>
+            <td>
+              <%= form_with model: [:admin, @order], local: true do |f| %>
+                <%= f.select :status, Order.statuses.keys.map {|k| [k, k]}, {} %>
+                <%= f.submit "更新", class: "btn btn-success btn-sm" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="d-flex">
+        <table class="table mr-3">
+          <thead>
+            <tr class="table-hover table-inverse table-active">
+              <th>商品名</th>
+              <th>単価（税込）</th>
+              <th>数量</th>
+              <th>小計</th>
+              <th>制作ステータス</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @order_item.each do |order_item| %>
+            <tr>
+              <td><%= order_item.item.name %></td>
+              <td><%= (order_item.price).to_s(:delimited) %></td>
+              <td><%= order_item.number %></td>
+              <td><%= (order_item.price * order_item.number).to_s(:delimited) %></td>
+              <td>
+                <%= form_with model: order_item, url: admin_order_order_item_path(order_item), local: true do |f| %>
+                  <%= f.select :making_status, OrderItem.making_statuses.keys.map {|k| [k, k]}, {} %>
+                  <%= f.submit "更新", class: "btn btn-success btn-sm" %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <table class="table table-borderless col-3">
+          <tbody>
+            <tr>
+              <td>商品合計</td>
+              <td><%= (@order.payment_amount).to_s(:delimited) %>円</td>
+            </tr>
+
+            <tr>
+              <td>送料</td>
+              <td><%= (@order.shipping_fee).to_s(:delimited) %>円</td>
+            </tr>
+
+            <tr>
+              <td>請求金額合計</td>
+              <td><%= (@order.payment_amount + @order.shipping_fee).to_s(:delimited) %>円</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

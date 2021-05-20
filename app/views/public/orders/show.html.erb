@@ -12,7 +12,7 @@
             <tbody>
               <tr>
                 <td class="table-active">注文日</td>
-                <td><%= @order.created_at %></td>
+                <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
               </tr>
 
               <tr>
@@ -43,17 +43,17 @@
             <tbody>
               <tr>
                 <td class="table-active">商品合計</td>
-                <td><%= @order.payment_amount %></td>
+                <td><%= (@order.payment_amount).to_s(:delimited) %></td>
               </tr>
 
               <tr>
                 <td class="table-active">配送料</td>
-                <td><%= @order.shipping_fee %></td>
+                <td><%= (@order.shipping_fee).to_s(:delimited) %></td>
               </tr>
 
               <tr>
                 <td class="table-active">ご請求額</td>
-                <td><%= @order.payment_amount + @order.shipping_fee %></td>
+                <td><%= (@order.payment_amount + @order.shipping_fee).to_s(:delimited) %></td>
               </tr>
 
             </tbody>
@@ -66,7 +66,7 @@
         <thead class="table-hover table-inverse table-active">
           <tr>
             <th>商品</th>
-            <th>単価</th>
+            <th>単価(税込)</th>
             <th>個数</th>
             <th>小計</th>
           </tr>
@@ -76,9 +76,9 @@
           <% @order.order_items.each do |order_item| %>
           <tr>
             <td><%= order_item.item.name %></td>
+            <td><%= order_item.tax_price %></td>
             <td><%= order_item.number %></td>
-            <td><%= order_item.price %></td>
-            <td><%= order_item.number * order_item.price %></td>
+            <td><%= order_item.number * order_item.tax_price %></td>
           </tr>
           <% end %>
         </tbody>

@@ -1,5 +1,24 @@
 ja:
   activerecord:
+    models:
+      customer: 会員
+      address: 配送先
+    attributes:
+      customer:
+        last_name: 名前（姓）
+        first_name: 名前（名）
+        kana_last_name: フリガナ（セイ）
+        kana_first_name: フリガナ（メイ）
+        postal_code: 郵便番号
+        address: 住所
+        phone_number: 電話番号
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+      address:
+        name: 宛名
+        postal_code: 郵便番号
+        address: 住所
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -201,6 +220,7 @@ ja:
     am: 午前
     formats:
       default: "%Y/%m/%d %H:%M:%S"
+
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後

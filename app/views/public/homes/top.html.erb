@@ -1,10 +1,10 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-sm-12">
+    <div class = "col-sm-12 my-5">
       <p class = "text-success"><%= flash[:success] %></p>
       <div class = "mx-auto top-img">
         <div class = "mx-auto text-box">
-          <p class = "top-text text-center pt-5">
+          <p class = "top-text text-center font-weight-bold pt-5">
             ようこそ、ながのCAKEへ！<br />
             このサイトは、ケーキ販売のECサイトになります！<br />
             会員でない方も商品の閲覧はできますが、<br />
@@ -12,27 +12,9 @@
           </p>
         </div>
       </div>
-      <h2><strong>新着商品</strong></h2>
-      <div class = "d-flex justify-content-between">
-        <% @items.each do |item| %>
-        <div class="card mb-5", style="width:25%">
-          <div class ="item-image">
-            <%= link_to item_path(item) do %>
-            <p class="img card-img-top"><%= attachment_image_tag item, :image, width: "100%", format: "jpeg", fallback: "no_image.jpg" %></p>
-            <% end %>
-          </div>
-          <div class="card-body">
-            <p class="card-title"><%= item.name %></p>
-            <% if item.is_active == true %>
-              <p class="item-price"><%= ((item.price*1.10).to_i).to_s(:delimited) %>円(税込)</p>
-            <% else %>
-              <p class="text-danger font-weight-bold">Sold out</p>
-            <% end %>
-          </div>
-        </div>
-        <% end %>
-      </div>
-      <p class = "text-right"><%= link_to "全ての商品を見る>", items_path %></p>
+      <h2 class = "font-weight-bold mb-4">新着商品</h2>
+      <%= render 'public/items/new_items', items: @items %>
+      <p class = "text-right"><%= link_to "全ての商品を見る⇒", items_path , class: "text-dark" %></p>
     </div>
   </div>
 </div>
