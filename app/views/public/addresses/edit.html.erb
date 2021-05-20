@@ -1,7 +1,7 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-sm-12 my-5">
-      <h2 class = "mb-4 font-weight-bold">配送先編集</h2>
+      <h2 class = "offset-sm-1  mb-5 font-weight-bold">配送先編集</h2>
       <%= form_with model: @address, url: address_path(@address.id), local:true do |f| %>
         <%= render 'layouts/error', obj: @address %>
       
