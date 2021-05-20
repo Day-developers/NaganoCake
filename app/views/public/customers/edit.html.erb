@@ -1,7 +1,7 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-sm-12 my-5">
-      <h2 class = "mb-4 font-weight-bold">会員編集情報</h4>
+      <h2 class = "offset-sm-1 mb-5 font-weight-bold">会員編集情報</h4>
       <%= form_with model: @customer, url: customers_path ,local: true do |f| %>
         <%= render 'layouts/error', obj: @customer %>
       <div class = "field">
@@ -9,33 +9,33 @@
          <%= f.text_field :last_name, autocomplete: "last_name", placeholder: "令和", class: "col-3" %>
          <%= f.text_field :first_name, autocomplete: "first_name", placeholder: "道子", class: "col-3" %>
       </div>
-      
+
       <div class = "field">
          <%= f.label "フリガナ", class: "col-3" %>
          <%= f.text_field :kana_last_name, autocomplete: "kana_last_name", placeholder: "レイワ", class: "col-3" %>
          <%= f.text_field :kana_first_name, autocomplete: "kana_first_name", placeholder: "ミチコ", class: "col-3" %>
       </div>
-      
+
       <div class = "field ">
          <%= f.label "郵便番号", class: "col-3" %>
          <%= f.text_field :postal_code, autocomplete: "postal_code", placeholder: "0000000", class: "col-3" %>
       </div>
-      
+
       <div class = "field">
          <%= f.label "住所", class: "col-3" %>
          <%= f.text_field :address, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0", class: "col-6" %>
       </div>
-      
+
       <div class = "field">
          <%= f.label "電話番号", class: "col-3" %>
          <%= f.text_field :phone_number, autocomplete: "phone_number", placeholder: "0000000000", class: "col-3" %>
       </div>
-      
+
       <div class = "field">
          <%= f.label "メールアドレス", class: "col-3" %>
          <%= f.text_field :email, autocomplete: "email", placeholder: "example@example.com", class: "col-3" %>
       </div>
-      
+
       <div class = "actions　btn-toolbar text-center mt-3">
         <%= f.submit "編集内容を保存", class: "btn btn-success col-3 mr-5" %>
         <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger col-2 ml-5" %>
