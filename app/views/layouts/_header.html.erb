@@ -1,52 +1,56 @@
 <header>
   <div class="container">
-    <nav class="navbar navbar-expand-sm">
+    <nav class="navbar navbar-expand-xl">
       <a class="navbar-brand" href="/"><%= image_tag('logo1.png') %></a>
-      <nav>
+      <button class="navbar-toggler mx-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fas fa-bars"</span>
+      </button>
+
+      <nav class="mx-auto collapse navbar-collapse justify-content-end", id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <% if customer_signed_in? %>
-            <li  class="my-auto">
+            <li  class="nav-text my-3 text-center">
               ようこそ、<%= current_customer.last_name %>さん！
             </li>
-            <p class="btn btn-secondary mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-3 my-auto">
               <%= link_to "マイページ", customers_my_page_path, class: "nav-link" %>
             </p>
-            <p class="btn btn-outline-secondary mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-3 my-auto">
               <%= link_to "商品一覧", items_path, class: "nav-link" %>
-              <p>
-            <p class="btn btn-outline-secondary mx-3 my-auto">
+            </p>
+            <p class="nav-button btn btn-sm mx-3 my-auto">
               <%= link_to "カート", cart_items_path, class: "nav-link" %>
             </p>
-            <p class="btn btn-outline-secondary mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-3 my-auto">
               <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
             </p>
           <% elsif admin_signed_in? %>
-            <p class="btn btn-outline-secondary mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-3 my-auto">
               <%= link_to "商品一覧", admin_items_path, class: "nav-link" %>
             </p>
-            <p class="btn btn-outline-secondary mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-3 my-auto">
               <%= link_to "会員一覧", admin_customers_path, class: "nav-link" %>
             </p>
-            <p class="btn btn-outline-secondary mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-3 my-auto">
               <%= link_to "注文履歴一覧", admin_root_path, class: "nav-link" %>
             </p>
-            <p class="btn btn-outline-secondary mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-3 my-auto">
               <%= link_to "ジャンル一覧", admin_genres_path, class: "nav-link" %>
             </p>
-            <p class="btn btn-outline-secondary mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-3 my-auto">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
             </p>
           <% else %>
-            <p class="btn btn-outline-secondary mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-3 my-auto">
               <%= link_to "About", about_path, class: "nav-link" %>
             </p>
-            <p class="btn btn-outline-secondary mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-3 my-auto">
               <%= link_to "商品一覧", items_path, class: "nav-link" %>
             </p>
-            <p class="btn btn-outline-secondary mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-3 my-auto">
               <%= link_to "新規登録", new_customer_registration_path, class: "nav-link" %>
             </p>
-            <p class="btn btn-outline-secondary mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-3 my-auto">
               <%= link_to "ログイン", new_customer_session_path, class: "nav-link" %>
             </p>
           <% end %>
