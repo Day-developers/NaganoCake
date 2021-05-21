@@ -3,7 +3,7 @@
     <div class="col-sm-8 px-sm-0">
       <p class="text-success mt-3"><%= flash[:success] %></p>
       <p class="text-danger mt-3"><%= flash[:danger] %></p>
-      <h2 class="font-weight-bold mt-5">ショッピングカート</h2>
+      <h2 class="font-weight-bold mt-5">ショッピングカート<i class="fas fa-cart-arrow-down"></i></h2>
     </div>
     <div class="col-sm-3 px-sm-0 text-right">
       <% unless @cart_item.empty? %>
@@ -41,7 +41,7 @@
             <td class="align-middle border-dark"><%= (cart_item.item_price_with_tax).to_s(:delimited) %></td>
             <td class="align-middle border-dark">
               <%= form_with model: cart_item, local: true do |f| %>
-                <%= f.number_field :number, min: 1, max: 100, class: "form-control-sm" %>
+                <%= f.select :number, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], {include_blank: '個数選択'},  class: "form-control-sm mb-3" %>
                 <%= f.submit "変更", class: "btn btn-success" %>
               <% end %>
             </td>
