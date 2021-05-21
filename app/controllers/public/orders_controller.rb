@@ -22,10 +22,15 @@ class Public::OrdersController < ApplicationController
       @order.name        = addresses.name
 
     elsif params[:order][:addresses] == "new_address"
-      @order.postal_code = params[:order][:postal_code]
-      @order.address     = params[:order][:address]
-      @order.name        = params[:order][:name]
-      @addresses = "1"
+      if params[:order][:postal_code] != "" && params[:order][:address] != "" && params[:order][:name] != ""
+        @order.postal_code = params[:order][:postal_code]
+        @order.address     = params[:order][:address]
+        @order.name        = params[:order][:name]
+        @addresses = "1"
+      else
+        flash[:danger] = "新しいお届け先が入力されていません"
+        redirect_to new_order_path
+      end
     end
   end
 
@@ -64,6 +69,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders
+    @orders = Order.where(customer_id: current_customer.id).order("created_at DESC")
   end
 
   def show
