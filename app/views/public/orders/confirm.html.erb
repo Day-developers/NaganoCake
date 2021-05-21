@@ -77,7 +77,7 @@
             <%= f.hidden_field :address %>
             <%= f.hidden_field :name %>
             <%= f.hidden_field :payment_method %>
-            <%= f.hidden_field :payment_amount, :value => (@sum + 800) %>
+            <%= f.hidden_field :payment_amount, :value => @sum %>
             <%= f.hidden_field :addresses, value: @addresses %>
             <%= link_to "注文情報入力へ戻る", new_order_path,  class: "btn btn-warning col-xs-3 back" %>
             <%= f.submit "注文を確定する", class: "btn btn btn-success center-block col-xs-5" %>
