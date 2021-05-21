@@ -24,7 +24,7 @@ ja:
         customer_id: 会員ID
         postal_code: 郵便番号
         address: 住所
-        name: 名前（フルネーム）
+        name: 宛名
         shipping_fee: 送料
         payment_amount: 請求額
         payment_method: 支払方法
