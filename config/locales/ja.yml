@@ -4,6 +4,8 @@ ja:
       customer: 会員
       address: 配送先
       order: 注文
+      geres: ジャンル
+      admin: 管理者
     attributes:
       customer:
         last_name: 名前（姓）
@@ -32,7 +34,7 @@ ja:
         name: ジャンル名
       admin:
         email: メールアドレス
-        encrypted_password: パスワード
+        password: パスワード
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
