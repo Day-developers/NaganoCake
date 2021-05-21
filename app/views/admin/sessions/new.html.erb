@@ -6,6 +6,7 @@
       </div>
       <div class = "my-5">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        
         <div class = "field text-center">
           <%= f.label :メールアドレス, class: "col-2" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "col-4" %>

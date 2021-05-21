@@ -28,6 +28,8 @@ ja:
         shipping_fee: 送料
         payment_amount: 請求額
         payment_method: 支払方法
+      genre:
+        name: ジャンル名
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
