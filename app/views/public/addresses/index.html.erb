@@ -27,21 +27,21 @@
         <table class = "table table-bordered col-sm-7 my-5">
         <thead class = "table-light">
           <tr >
-            <th class = "border border-dark">郵便番号</th>
-            <th class = "border border-dark">住所</th>
-            <th class = "border border-dark">宛名</th>
-            <th class = "border border-dark"></th>
+            <th class = "border-dark">郵便番号</th>
+            <th class = "border-dark">住所</th>
+            <th class = "border-dark">宛名</th>
+            <th class = "border-dark"></th>
           </tr>
         </thead>
         <tbody>
           <% @addresses.each do |address| %>
           <tr>
-            <td class = "border border-dark"><%= address.postal_code %></td>
-            <td class = "border border-dark"><%= address.address %></td>
-            <td class = "border border-dark"><%= address.name %></td>
-            <td class = "border border-dark">
+            <td class = "border-dark"><%= address.postal_code %></td>
+            <td class = "border-dark"><%= address.address %></td>
+            <td class = "border-dark"><%= address.name %></td>
+            <td class = "border-dark">
               <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-sm btn-success mr-2" %>
-              <%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" %>
+              <%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "削除しますか？" %>
             </td>
           </tr>
           <% end %>

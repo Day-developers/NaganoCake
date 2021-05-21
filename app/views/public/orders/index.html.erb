@@ -5,37 +5,37 @@
       <table class = "table table-bordered">
         <thead class = "table-light">
           <tr>
-            <th class = "border border-dark">注文日</th>
-            <th class = "border border-dark">配送先</th>
-            <th class = "border border-dark">注文商品</th>
-            <th class = "border border-dark">支払金額</th>
-            <th class = "border border-dark">ステータス</th>
-            <th class = "border border-dark">注文詳細</th>
+            <th class = "border-dark">注文日</th>
+            <th class = "border-dark">配送先</th>
+            <th class = "border-dark">注文商品</th>
+            <th class = "border-dark">支払金額</th>
+            <th class = "border-dark">ステータス</th>
+            <th class = "border-dark">注文詳細</th>
           </tr>
         </thead>
         <tbody>
           <% @orders.each do |order| %>
           <tr>
-            <td class = "border border-dark align-middle text-center">
+            <td class = "border-dark align-middle text-center">
               <%= order.created_at.strftime("%Y/%m/%d") %>
             </td>
-            <td class = "border border-dark align-middle">
+            <td class = "border-dark align-middle">
               <%= order.postal_code %><br />
               <%= order.address %><br />
               <%= order.name %>
             </td>
-            <td class = "border border-dark align-middle text-center">
+            <td class = "border-dark align-middle">
               <% order.order_items.each do |order_item| %>
                 <%= order_item.item.name %><br />
               <% end %>
             </td>
-            <td class = "border border-dark align-middle text-center">
+            <td class = "border-dark align-middle text-center">
               <%= (order.payment_amount + order.shipping_fee).to_s(:delimited) %>
             </td>
-            <td class = "border border-dark align-middle text-center">
+            <td class = "border-dark align-middle text-center">
               <%= order.status %>
             </td>
-            <td class = "border border-dark align-middle text-center">
+            <td class = "border-dark align-middle text-center">
               <%= link_to "表示する", order_path(order), class: "btn btn-success" %>
             </td>
           </tr>
