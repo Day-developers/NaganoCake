@@ -39,6 +39,10 @@ body {
 
  .main {
   background-color: #fff8dc;
+  min-height: 70vh;
+  position: relative;
+  padding-bottom: 100px;
+  box-sizing: border-box;
  }
 
  .top-img {
@@ -54,19 +58,19 @@ body {
  }
 
  .text-box {
-  padding-top: 50px;
+   padding-top: 50px;
    width: 500px;
    height: 300px;
  }
 
 
-.nav-link {
+.nav-link, .nav-text {
  list-style: none;
- color: black;
+ color: #FF6633;
 }
 
 .nav-link:hover {
- color: white;
+ color: #996600;
 }
 
 html{
@@ -74,7 +78,27 @@ html{
  min-height: 100%;
 }
 
-.footer{
+footer{
  width: 100%;
  height: 80px;
+ position: absolute;
+ bottom: 0;
+ background-color: white;
+}
+
+nav{
+ z-index: 100;
+}
+
+.nav-button{
+ background-color: white;
+ border-color: #FF6633;
+}
+
+.nav-button:hover{
+ background-color: #FFFFCC;
+}
+
+.fa-bars{
+ color: #FF6633;
 }
