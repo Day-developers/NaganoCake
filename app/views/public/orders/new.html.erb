@@ -29,6 +29,11 @@
         </div>
 
         <div class="new-address col-xs-12 radio ml-3">
+          <% if flash[:danger] %>
+            <div class="flash h5 mt-3 text-danger">
+              <%= flash[:danger] %>
+            </div>
+          <% end %>
           <%= f.radio_button :addresses, "new_address" %>
           <span>&nbsp新しいお届け先</span><br>
         <div class="field form-group col-md-11 row">
