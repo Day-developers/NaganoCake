@@ -25,6 +25,7 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address     = params[:order][:address]
       @order.name        = params[:order][:name]
+      @addresses = "1"
     end
   end
 
@@ -33,7 +34,9 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @order.shipping_fee = 800
     @order.status = 0
+
     if @order.save
+      flash[:success] = "ご注文が確定しました。"
       current_customer.cart_items.each do |cart_item|
         order_item = OrderItem.new
         order_item.number = cart_item.number
@@ -42,7 +45,11 @@ class Public::OrdersController < ApplicationController
         order_item.item_id = cart_item.item_id
         order_item.save
       end
-      current_customer.addresses.create(address_params)
+
+      if params[:order][:addresses] == "1"
+        current_customer.addresses.create(address_params)
+      end
+
       current_customer.cart_items.destroy_all
       redirect_to orders_complete_path
     else
