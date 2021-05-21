@@ -30,6 +30,9 @@ ja:
         payment_method: 支払方法
       genre:
         name: ジャンル名
+      admin:
+        email: メールアドレス
+        encrypted_password: パスワード
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
