@@ -2,7 +2,7 @@
   <div class = "row">
     <div class = "col-sm-12 px-sm-0 mb-3">
       <p class = "text-success mt-3"><%= flash[:success] %></p>
-      <h2 class = "font-weight-bold mt-5 mb-3 mx-3">配送先登録 / 一覧</h2>
+      <h2 class = "font-weight-bold mt-5 mb-5 mx-3"><i class="fas fa-address-book"></i>配送先登録 / 一覧</h2>
       <%= form_with model: @address, url: addresses_path, local:true do |f| %>
         <%= render 'layouts/error', obj: @address %>
 
@@ -25,8 +25,8 @@
     </div>
   </div>
   <div class = "row">
-    <div class="col-sm-10 px-sm-0 w-100%">
-      <table class = "table table-bordered">
+    <div class="col-sm-10 px-sm-0">
+      <table class = "table table-bordered mt-5">
         <thead class = "table-light">
           <tr >
             <th class = "border-dark" style="width: 10%">郵便番号</th>
