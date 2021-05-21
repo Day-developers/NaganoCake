@@ -3,6 +3,7 @@ ja:
     models:
       customer: 会員
       address: 配送先
+      order: 注文
     attributes:
       customer:
         last_name: 名前（姓）
@@ -19,6 +20,14 @@ ja:
         name: 宛名
         postal_code: 郵便番号
         address: 住所
+      order:
+        customer_id: 会員ID
+        postal_code: 郵便番号
+        address: 住所
+        name: 宛名
+        shipping_fee: 送料
+        payment_amount: 請求額
+        payment_method: 支払方法
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
