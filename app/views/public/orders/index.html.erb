@@ -1,9 +1,9 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-sm-12">
-      <h4 class = "offset-sm-1">注文履歴一覧</h4>
+    <div class = "col-sm-12 my-5">
+      <h2 class = "offset-sm-1 mb-5 font-weight-bold">注文履歴一覧</h2>
       <table class = "table table-bordered">
-        <thead class = "table-active">
+        <thead class = "table-light">
           <tr>
             <th class = "border border-dark">注文日</th>
             <th class = "border border-dark">配送先</th>
@@ -16,27 +16,27 @@
         <tbody>
           <% @orders.each do |order| %>
           <tr>
-            <td class = "border border-dark">
+            <td class = "border border-dark align-middle text-center">
               <%= order.created_at.strftime("%Y/%m/%d") %>
             </td>
-            <td class = "border border-dark">
+            <td class = "border border-dark align-middle">
               <%= order.postal_code %><br />
               <%= order.address %><br />
               <%= order.name %>
             </td>
-            <td class = "border border-dark">
-              <%= order.order_items.each do |order_item| %>
-                <%= order_item.item.name %>
+            <td class = "border border-dark align-middle text-center">
+              <% order.order_items.each do |order_item| %>
+                <%= order_item.item.name %><br />
               <% end %>
             </td>
-            <td class = "border border-dark">
-              <%= order.payment_amount %>円
+            <td class = "border border-dark align-middle text-center">
+              <%= (order.payment_amount + order.shipping_fee).to_s(:delimited) %>
             </td>
-            <td class = "border border-dark">
+            <td class = "border border-dark align-middle text-center">
               <%= order.status %>
             </td>
-            <td class = "border border-dark">
-              <%= link_to "表示する", order_path(order), class: "btn btn-sm btn-success" %>
+            <td class = "border border-dark align-middle text-center">
+              <%= link_to "表示する", order_path(order), class: "btn btn-success" %>
             </td>
           </tr>
           <% end %>
