@@ -7,8 +7,15 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order=Order.find(params[:id])
-    @order.update(order_params)
-    redirect_to admin_order_path(@order.id)
+    @order_item=OrderItem.where(order_id: @order.id)
+    if @order.update(order_params)
+      if @order.status == "入金確認"
+        @order_item.update(making_status: 1)
+        redirect_to admin_order_path(@order.id)
+      else
+        redirect_to admin_order_path(@order.id)
+      end
+    end
   end
 
   private
