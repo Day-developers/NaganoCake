@@ -31,68 +31,15 @@
 
           <tr>
             <td>注文ステータス</td>
-            <td>
-              <%= form_with model: [:admin, @order], local: true do |f| %>
-                <%= f.select :status, Order.statuses.keys.map {|k| [k, k]}, {} %>
-                <%= f.submit "更新", class: "btn btn-success btn-sm" %>
-              <% end %>
+            <td id="ajax-status">
+              <%= render "status", order: @order %>
             </td>
           </tr>
         </tbody>
       </table>
 
-      <div class="d-flex">
-        <table class="table table-bordered mr-3">
-          <thead>
-            <tr class="table-hover table-inverse table-light">
-              <th class="border-dark">商品名</th>
-              <th class="border-dark">単価（税込）</th>
-              <th class="border-dark">数量</th>
-              <th class="border-dark">小計</th>
-              <th class="border-dark">制作ステータス</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% sum = 0 %>
-            <% @order_item.each do |order_item| %>
-            <tr>
-              <td class="border-dark"><%= order_item.item.name %></td>
-              <td class="border-dark"><%= (order_item.tax_price).to_s(:delimited) %></td>
-              <td class="border-dark"><%= order_item.number %></td>
-              <td class="border-dark">
-                <%= (order_item.tax_price * order_item.number).to_s(:delimited) %>
-                <% sum += (order_item.tax_price * order_item.number) %>
-              </td>
-              <td class="border-dark">
-                <%= form_with model: order_item, url: admin_order_order_item_path(order_item), local: true do |f| %>
-                  <%= f.select :making_status, OrderItem.making_statuses.keys.map {|k| [k, k]}, {} %>
-                  <%= f.submit "更新", class: "btn btn-success btn-sm" %>
-                <% end %>
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-
-        <table class="table table-borderless col-3">
-          <tbody>
-            <tr>
-              <td>商品合計</td>
-              <td><%= sum.to_s(:delimited) %>円</td>
-            </tr>
-
-            <tr>
-              <td>送料</td>
-              <td><%= (@order.shipping_fee).to_s(:delimited) %>円</td>
-            </tr>
-
-            <tr>
-              <td>請求金額合計</td>
-              <td><%= (sum + @order.shipping_fee).to_s(:delimited) %>円</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="d-flex", id="ajax-making-status">
+        <%= render "making_status", order_item: @order_items, order: @order %>
       </div>
 
     </div>
