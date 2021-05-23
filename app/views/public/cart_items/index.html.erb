@@ -1,3 +1,79 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 px-sm-0">
+      <p class="text-success mt-3"><%= flash[:success] %></p>
+      <p class="text-danger mt-3"><%= flash[:danger] %></p>
+      <h2 class="font-weight-bold mt-5">ショッピングカート<i class="fas fa-cart-arrow-down"></i></h2>
+    </div>
+    <div class="col-sm-3 px-sm-0 text-right">
+      <% unless @cart_item.empty? %>
+      <%= link_to "カートを空にする", cart_items_destroy_all_path, class: "btn btn-danger mt-5", id: "all-delete", method: :delete, data: { confirm: '削除しますか？' } %>
+      <% end %>
+    </div>
+  </div>
+
+  <% if @cart_item.empty? %>
+    <div class="text-center">
+      <h2>カートに商品が入っておりません</h2>
+      <%= link_to "買い物を続ける", items_path, class: "btn btn-primary mt-3 mb-5" %>
+    </div>
+  <% else %>
+  <div class="row">
+    <div class="col-sm-11 px-sm-0">
+      <table class="table table-bordered mt-3 mb-5">
+        <thead>
+          <tr>
+            <th class="table-light border-dark" style="width: 40%">商品名</th>
+            <th class="table-light border-dark" style="width: 15%">単価（税込）</th>
+            <th class="table-light border-dark" style="width: 15%">数量</th>
+            <th class="table-light border-dark" style="width: 15%">小計</th>
+            <th class="table-light border-dark" style="width: 15%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @total_amount = 0 %>
+          <% @cart_item.each do |cart_item| %>
+          <tr>
+            <td class="align-middle border-dark">
+              <%= attachment_image_tag cart_item.item, :image, width: "25%", format: "jpeg", fallback: "no_image.jpg" %>
+              <strong><%= cart_item.item.name %></strong>
+            </td>
+            <td class="align-middle border-dark"><%= (cart_item.item_price_with_tax).to_s(:delimited) %></td>
+            <td class="align-middle border-dark">
+              <%= form_with model: cart_item, local: true do |f| %>
+                <%= f.select :number, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], {include_blank: '個数選択'},  class: "form-control-sm mb-3" %>
+                <%= f.submit "変更", class: "btn btn-success" %>
+              <% end %>
+            </td>
+            <td class="align-middle border-dark"><%= (cart_item.sum).to_s(:delimited) %></td>
+            <td class="align-middle border-dark"><%= link_to "削除する", cart_item_path(cart_item), class: "btn btn-danger", id: "delete", method: :delete, data: { confirm: '削除しますか？' } %></td>
+          <% @total_amount += cart_item.sum  %>
+          <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <%= link_to "買い物を続ける", root_path, data: {"turbolinks" => false}, class: "btn btn-primary" %>
+    </div>
+    <div class="col-sm-3 px-sm-0">
+      <table class="table table-bordered">
+        <tr>
+          <td class="table-light border-dark" style="width:50%"><strong>合計金額</strong></th>
+          <td class="border-dark" style="width:50%"><%= @total_amount.to_s(:delimited) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= link_to "情報入力へ進む", new_order_path, class: "btn btn-success mb-3" %>
+    </div>
+  </div>
+  <% end %>
+
 <div class="container", id="ajax-cart-index">
   <%= render "cart_index", cart_item: @cart_item %>
 </div>
