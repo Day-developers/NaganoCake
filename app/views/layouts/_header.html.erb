@@ -1,7 +1,7 @@
 <header>
   <div class="container">
     <nav class="navbar navbar-expand-xl">
-      <a class="navbar-brand" href="/"><%= image_tag('logo1.png') %></a>
+      <%= link_to image_tag("logo1.png"), "/", data: {"turbolinks" => false} %>
       <button class="navbar-toggler mx-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="fas fa-bars"></span>
       </button>
