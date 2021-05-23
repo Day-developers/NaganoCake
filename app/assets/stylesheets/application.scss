@@ -67,6 +67,7 @@ body {
 .nav-link, .nav-text {
  list-style: none;
  color: #FF6633;
+ font-size: 10px;
 }
 
 .nav-link:hover {
@@ -101,4 +102,8 @@ nav{
 
 .fa-bars{
  color: #FF6633;
+}
+
+.btn-block {
+ height: 40px
 }

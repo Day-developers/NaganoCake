@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-xl">
       <a class="navbar-brand" href="/"><%= image_tag('logo1.png') %></a>
       <button class="navbar-toggler mx-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="fas fa-bars"</span>
+        <span class="fas fa-bars"></span>
       </button>
 
       <nav class="mx-auto collapse navbar-collapse justify-content-end", id="navbarSupportedContent">
@@ -12,47 +12,55 @@
             <li  class="nav-text my-3 text-center">
               ようこそ、<%= current_customer.last_name %>さん！
             </li>
-            <p class="nav-button btn btn-sm mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-2 my-auto">
               <%= link_to "マイページ", customers_my_page_path, class: "nav-link" %>
             </p>
-            <p class="nav-button btn btn-sm mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-2 my-auto">
               <%= link_to "商品一覧", items_path, class: "nav-link" %>
             </p>
-            <p class="nav-button btn btn-sm mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-2 my-auto">
               <%= link_to "カート", cart_items_path, class: "nav-link" %>
             </p>
-            <p class="nav-button btn btn-sm mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-2 my-auto">
               <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
             </p>
+            <form class="d-flex mt-1">
+            </form>
           <% elsif admin_signed_in? %>
-            <p class="nav-button btn btn-sm mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-2 my-auto">
               <%= link_to "商品一覧", admin_items_path, class: "nav-link" %>
             </p>
-            <p class="nav-button btn btn-sm mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-2 my-auto">
               <%= link_to "会員一覧", admin_customers_path, class: "nav-link" %>
             </p>
-            <p class="nav-button btn btn-sm mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-2 my-auto">
               <%= link_to "注文履歴一覧", admin_root_path, class: "nav-link" %>
             </p>
-            <p class="nav-button btn btn-sm mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-2 my-auto">
               <%= link_to "ジャンル一覧", admin_genres_path, class: "nav-link" %>
             </p>
-            <p class="nav-button btn btn-sm mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-2 my-auto">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
             </p>
+            <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
+              <%= f.text_field :search, class: "form-control-sm mt-2", style: "width:100px;", placeholder: "Search" %>
+              <%= f.submit "検索", class: "btn btn-success btn-sm" %>
+            <% end %>
           <% else %>
-            <p class="nav-button btn btn-sm mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-2 my-auto">
               <%= link_to "About", about_path, class: "nav-link" %>
             </p>
-            <p class="nav-button btn btn-sm mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-2 my-auto">
               <%= link_to "商品一覧", items_path, class: "nav-link" %>
             </p>
-            <p class="nav-button btn btn-sm mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-2 my-auto">
               <%= link_to "新規登録", new_customer_registration_path, class: "nav-link" %>
             </p>
-            <p class="nav-button btn btn-sm mx-3 my-auto">
+            <p class="nav-button btn btn-sm mx-2 my-auto">
               <%= link_to "ログイン", new_customer_session_path, class: "nav-link" %>
             </p>
+            <form class="d-flex mt-1">
+            </form>
           <% end %>
         </ul>
       </nav>
