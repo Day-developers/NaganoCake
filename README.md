@@ -5,8 +5,9 @@
 
 
 ## アプリトップページ
-![horizontal_on_white_by_logaster (1)](https://user-images.githubusercontent.com/78731929/119217715-eb857a00-bb16-11eb-8304-45df2318e98a.png)
-
+![horizontal_on_white_by_logaster (1)](https://user-images.githubusercontent.com/78731929/119217715-eb857a00-bb16-11eb-8304-45df2318e98a.png)  
+![トップページ](https://user-images.githubusercontent.com/78731929/119251817-92cfe300-bbe3-11eb-9aea-3b97befdb228.gif)  
+![トップページ 新着商品](https://user-images.githubusercontent.com/78731929/119252161-9fedd180-bbe5-11eb-87c0-5b1f3a796274.gif)  
 
 
 ## アプリケーション概要
