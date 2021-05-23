@@ -1,0 +1,11 @@
+<% addresses.each do |address| %>
+  <tr>
+    <td class = "border-dark"><%= address.postal_code %></td>
+    <td class = "border-dark"><%= address.address %></td>
+    <td class = "border-dark"><%= address.name %></td>
+    <td class = "border-dark">
+    <%= link_to "編集する", edit_address_path(address.id), local: true, class: "btn btn-sm btn-success mr-2" %>
+    <%= link_to "削除する", address_path(address.id), method: :delete, remote: true, class: "btn btn-sm btn-danger", "data-confirm" => "削除しますか？" %>
+    </td>
+  </tr>
+<% end %>

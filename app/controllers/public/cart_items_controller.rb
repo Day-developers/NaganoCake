@@ -27,25 +27,27 @@ class Public::CartItemsController < ApplicationController
 
   def update
     @cart_item = CartItem.find(params[:id])
+    @cart_items = CartItem.where(customer_id: current_customer.id).order("created_at DESC")
     if @cart_item.update(cart_item_params)
-      redirect_to cart_items_path
+      render :index
     else
       flash[:danger] = "正しい個数を入力してください"
-      redirect_to request.referer
+      render :index
     end
   end
 
   def destroy
     @cart_item = CartItem.find(params[:id])
+    @cart_items = CartItem.where(customer_id: current_customer.id).order("created_at DESC")
     @cart_item.destroy
     flash[:success] = "選択いただいた商品を削除しました"
-    redirect_to cart_items_path
+    render :index
   end
 
   def destroy_all
    @cart_items = current_customer.cart_items.all
    @cart_items.destroy_all
-   redirect_to cart_items_path
+   render :index
   end
 
 

@@ -1,9 +1,9 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-sm-12 px-sm-0 mb-3">
-      <p class = "text-success mt-3"><%= flash[:success] %></p>
+      <p id="success", class = "text-success mt-3"><%= flash[:success] %></p>
       <h2 class = "font-weight-bold mt-5 mb-5 mx-3"><i class="fas fa-address-book"></i>配送先登録 / 一覧</h2>
-      <%= form_with model: @address, url: addresses_path, local:true do |f| %>
+      <%= form_with model: @address, url: addresses_path, remote: true do |f| %>
         <%= render 'layouts/error', obj: @address %>
 
       <div class = "field">
@@ -35,18 +35,8 @@
             <th class = "border-dark" style="width: 25%"></th>
           </tr>
         </thead>
-        <tbody>
-          <% @addresses.each do |address| %>
-          <tr>
-            <td class = "border-dark"><%= address.postal_code %></td>
-            <td class = "border-dark"><%= address.address %></td>
-            <td class = "border-dark"><%= address.name %></td>
-            <td class = "border-dark">
-              <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-sm btn-success mr-2" %>
-              <%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "削除しますか？" %>
-            </td>
-          </tr>
-          <% end %>
+        <tbody id="address">
+          <%= render 'public/addresses/index', addresses: @addresses %>
         </tbody>
       </table>
     </div>
