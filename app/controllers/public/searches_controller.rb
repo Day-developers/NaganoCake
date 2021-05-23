@@ -1,3 +1,6 @@
 class Public::SearchesController < ApplicationController
-  before_action :authenticate_customer!
+
+  def search
+    @items = Item.looks(params[:search]).page(params[:page]).per(10)
+  end
 end

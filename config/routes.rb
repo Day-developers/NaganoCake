@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get "orders/complete" => "orders#complete"
     get "/customers/my_page" => "customers#show"
     get "/customers/unsubscribe" => "customers#unsubscribe"
+    get "search" => "searches#search"
     post "orders/confirm" => "orders#confirm"
     patch "/customers/withdraw" => "customers#withdraw"
     delete "/cart_items/destroy_all" => "cart_items#destroy_all"
