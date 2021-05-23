@@ -135,3 +135,49 @@ nav{
 .btn-block {
  height: 40px
 }
+
+.btn-success {
+ transition: .3s;
+ border-radius: 0px;
+ outline: 1px solid;
+ outline-color: #288c66;
+ outline-offset: 0px;
+}
+
+.btn-primary {
+ transition: .3s;
+ border-radius: 0px;
+ outline: 1px solid;
+ outline-color: #00608d;
+ outline-offset: 0px;
+}
+
+.btn-danger {
+ transition: .3s;
+ border-radius: 0px;
+ outline: 1px solid;
+ outline-color: #ea5550;
+ outline-offset: 0px;
+}
+
+.btn-success:hover {
+  background: #7cfc00;
+  animation: light .8s infinite;
+}
+
+.btn-primary:hover {
+ background: #00ffff;
+ animation: light .8s infinite;
+}
+
+.btn-danger:hover {
+ background: #ff0000;
+ animation: light .8s infinite;
+}
+
+@keyframes light {
+  100% { 
+    outline-color: transparent;
+    outline-offset: 12px;
+  }
+}
