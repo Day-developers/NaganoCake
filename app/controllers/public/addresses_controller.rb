@@ -7,15 +7,15 @@ class Public::AddressesController < ApplicationController
   end
 
   def create
-    @addresses = Address.all
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
     @addresses = current_customer.addresses
-    if @address.save
-      flash[:success] = "配送先を追加しました"
-      # redirect_to addresses_path
-    else
-      render 'index'
+    respond_to do |format|
+      if @address.save
+        format.js { flash[:success] = "配送先を追加しました" }
+      else
+        render 'index'
+      end
     end
   end
 
@@ -34,11 +34,12 @@ class Public::AddressesController < ApplicationController
   end
 
   def destroy
-    @addresses = Address.all
+    @addresses = current_customer.addresses
     @address = Address.find(params[:id])
     @address.destroy
-    flash[:success] = "配送先を削除しました"
-    # redirect_to addresses_path
+    respond_to do |format|
+      format.js { flash[:success] = "配送先を削除しました" }
+    end
   end
 
   private
