@@ -1,0 +1,5 @@
+$('#address').html("<%= j(render 'public/addresses/index', addresses: @addresses) %>");
+
+<% flash.each do |type, message| %>
+  $('#success').html("<%= message %>");
+<% end %>
