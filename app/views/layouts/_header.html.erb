@@ -24,12 +24,19 @@
             <p class="nav-button btn btn-sm mx-2 my-auto">
               <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
             </p>
-            <%= form_with url: search_path, local: true, method: :get do |f| %>
-              <%= f.text_field :search, class: "form-control-sm mt-2", style: "width:100px;", placeholder: "Search" %>
-              <%= f.collection_select(:genre_id, Genre.all, :id, :name, class: "col-sm-8 genre_id") %>
-              <%= f.submit "検索", class: "btn btn-success btn-sm" %>
-            <% end %>
-          <% elsif admin_signed_in? %>
+            <div class="nav-item dropdown mt-2">
+              <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ジャンル検索
+              </div>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <% Genre.all.each do |genre| %>
+                <a class="dropdown-item">
+                  <%= link_to genre.name, search_path('search[value]': genre.id, 'search[how]': "match") %>
+                </a>
+                <% end %>
+              </div>
+            </div>
+            <% elsif admin_signed_in? %>
             <p class="nav-button btn btn-sm mx-2 my-auto">
               <%= link_to "商品一覧", admin_items_path, class: "nav-link" %>
             </p>
@@ -63,11 +70,18 @@
             <p class="nav-button btn btn-sm mx-2 my-auto">
               <%= link_to "ログイン", new_customer_session_path, class: "nav-link" %>
             </p>
-            <%= form_with url: search_path, local: true, method: :get do |f| %>
-              <%= f.text_field :search, class: "form-control-sm mt-2", style: "width:100px;", placeholder: "Search" %>
-              <%= f.collection_select(:genre_id, Genre.all, :id, :name, class: "col-sm-8 genre_id") %>
-              <%= f.submit "検索", class: "btn btn-success btn-sm" %>
-            <% end %>
+            <div class="nav-item dropdown mt-2">
+              <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ジャンル検索
+              </div>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <% Genre.all.each do |genre| %>
+                <a class="dropdown-item">
+                  <%= link_to genre.name, search_path('search[value]': genre.id, 'search[how]': "match") %>
+                </a>
+                <% end %>
+              </div>
+            </div>
           <% end %>
         </ul>
       </nav>
