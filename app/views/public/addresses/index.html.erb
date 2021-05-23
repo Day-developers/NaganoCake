@@ -5,7 +5,7 @@
       <h2 class = "font-weight-bold mt-5 mb-5 mx-3"><i class="fas fa-address-book"></i>配送先登録 / 一覧</h2>
       <%= form_with model: @address, url: addresses_path, remote: true do |f| %>
         <%= render 'layouts/error', obj: @address %>
-
+        
       <div class = "field">
         <%= f.label "郵便番号（ハイフンなし）", class: "col-3" %>
         <%= f.text_field :postal_code, autocomplete: "postal_code", placeholder: "0000000", class: "col-3" %>
