@@ -1,3 +1,41 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  namespace :admin do
+    root to: "homes#top"
+    get "search" => "searches#search"
+    resources :customers,only: [:index, :show, :edit, :update]
+    resources :orders, only: [:index, :show, :update] do
+      resources :order_items, only: [:update]
+    end
+    resources :items, only: [:new, :create, :index, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
+  end
+
+  scope module: :public do
+    root to: "homes#top"
+    get "/about" => "homes#about", as: "about"
+    get "orders/complete" => "orders#complete"
+    get "/customers/my_page" => "customers#show"
+    get "/customers/unsubscribe" => "customers#unsubscribe"
+    get "search" => "searches#search"
+    post "orders/confirm" => "orders#confirm"
+    patch "/customers/withdraw" => "customers#withdraw"
+    delete "/cart_items/destroy_all" => "cart_items#destroy_all"
+    resource :customers, only: [:edit, :update]
+    resources :orders, only: [:new, :create, :index, :show]
+    resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    resources :addresses, only: [:index, :create, :destroy, :edit, :update]
+  end
+
+  devise_for :admin, controllers: {
+    sessions: "admin/sessions"
+  }
+
+  devise_for :customers, controllers: {
+    sessions: "public/sessions",
+    passwords: "public/passwords",
+    registrations: "public/registrations"
+  }
+
 end

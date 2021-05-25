@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="row">
+    <div class = "col-sm-12 my-5">
+      <h2 class = "offset-sm-1 mb-5 font-weight-bold">注文情報確認</h2>
+      <div class = "d-flex">
+      <% if current_customer.cart_items.present? %>
+        <table class = "table table-bordered">
+          <thead>
+            <tr>
+              <th class="table-light border-dark">商品名</th>
+              <th class="table-light border-dark", style = "width: 16%">単価（税込）</th>
+              <th class="table-light border-dark">数量</th>
+              <th class="table-light border-dark">小計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @sum = 0 %>
+            <% @cart_items.each do |cart| %>
+              <tr>
+                <td class="border-dark">
+                  <%= attachment_image_tag(cart.item, :image, size: "70x50", fallback: "no_image.jpg") %>
+                  <strong class ="ml-2"><%= cart.item.name %></strong>
+                </td>
+                <td class="border-dark align-middle">
+                  <%= ((cart.item.price*1.10).to_i).to_s(:delimited) %>
+                </td>
+                <td class="border-dark align-middle">
+                  <%= cart.number %>
+                </td>
+                <td class="border-dark align-middle">
+                  <%= ((cart.item.price*1.10).to_i*(cart.number).to_i).to_s(:delimited) %>
+                  <% @sum +=  ((cart.item.price*1.10).to_i*(cart.number).to_i) %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="col-sm-3 ml-5">
+        <table class = "table table-bordered">
+          <tr>
+            <th class="table-light border-dark">送料</th>
+            <td class="border-dark col-xs-5">800</td>
+          </tr>
+          <tr>
+            <th class="table-light border-dark">商品合計</th>
+            <td class="border-dark"><%= @sum.to_s(:delimited) %></td>
+          </tr>
+          <tr>
+            <th class="table-light border-dark">請求金額</th>
+            <td class="border-dark"><%= (@sum + 800).to_s(:delimited) %></td>
+          </tr>
+        </table>
+        </div>
+      </div>
+      <div class="col-xs-9">
+      <table class = "table table-borderless mt-3">
+        <tr>
+          <th class="info">
+            <h5 class = "font-weight-bold">支払方法</h5>
+            <td>
+              <h5><%= @order.payment_method %></h5>
+            </td>
+          </th>
+        </tr>
+        <tr>
+          <th class="info">
+            <h5 class = "font-weight-bold">お届け先</h5>
+            <td>
+              <h5><%= @order.postal_code %>&nbsp;&nbsp;&nbsp;<%= @order.address %></h5>
+              <h5><%= @order.name %></h5>
+            </td>
+          </th>
+        </tr>
+      </table>
+      </div>
+      <div class ="text-center my-5">
+        <%= form_with model: @order, url: orders_path, local: true do |f| %>
+          <%= f.hidden_field :postal_code %>
+          <%= f.hidden_field :address %>
+          <%= f.hidden_field :name %>
+          <%= f.hidden_field :payment_method %>
+          <%= f.hidden_field :payment_amount, :value => @sum %>
+          <%= f.hidden_field :addresses, value: @addresses %>
+          <%= link_to "注文情報入力へ戻る", new_order_path,  class: "btn btn-warning col-xs-3 back mr-5" %>
+          <%= f.submit "注文を確定する", class: "btn btn-success col-xs-5" %>
+        <% end %>
+      </div>
+      <% else %>
+        <p>お客様のショッピングカートに商品はありませんので注文確定ができません。</p>
+        <p><%= link_to "商品一覧", items_path %>から商品をお探し下さい。</p>
+      <% end %>
+    </div>
+  </div>
+</div>

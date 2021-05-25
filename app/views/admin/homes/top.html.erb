@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 px-sm-0 mx-auto">
+      <h2 class="font-weight-bold mt-5">注文履歴一覧</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-10 px-sm-0 mx-auto">
+      <table class="table table-hover table-inverse mt-3 mb-5">
+        <thead>
+          <tr>
+            <th class="table-light border-dark">購入日時</th>
+            <th class="table-light border-dark">購入者</th>
+            <th class="table-light border-dark">注文個数</th>
+            <th class="table-light border-dark">注文ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td class="align-middle border-dark">
+              <%= link_to admin_order_path(order), class: "text-dark" do %>
+                <%= l order.created_at %>
+              <% end %>
+            </td>
+            <td class="align-middle border-dark">
+              <%= order.customer.last_name %><%= order.customer.first_name %>
+            </td>
+            <td class="align-middle border-dark">
+              <% @sum = 0 %>
+              <% order.order_items.each do |order_item| %>
+              <% @sum += order_item.number %>
+              <% end %>
+              <%= @sum %>
+            </td>
+            <td class="align-middle border-dark text-success">
+              <%= order.status %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <%= paginate @orders, class:"text-center" %>
+</div>
+
+

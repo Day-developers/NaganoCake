@@ -1,0 +1,183 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap";
+
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box
+ }
+
+body {
+  font-family:  Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
+}
+
+//   "Helvetica Neue",
+//     Arial,
+//     "Hiragino Kaku Gothic ProN",
+//     "Hiragino Sans",
+//     Meiryo,
+//     sans-serif;
+// }
+
+ header {
+   height: 170px;
+ }
+
+ .main {
+  background-color: #fff8dc;
+  min-height: 70vh;
+  position: relative;
+  padding-bottom: 100px;
+  box-sizing: border-box;
+ }
+
+ .text-box {
+  width: 70%;
+  position: relative;
+ }
+
+.top-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  -webkit-transform: translateY(-50%) translateX(-50%);
+  z-index: 9999;
+  height: 100px;
+  background-color: rgba(255,255,255,0.5);
+}
+
+#container {
+ height: 350px;
+}
+
+.image1 {
+  background-image: url(top_page.jpg);
+  background-position: bottom;
+}
+.image2 {
+  background-image: url(top_image2.jpg);
+}
+.image3 {
+  background-image: url(top_image3.jpg);
+}
+.image4 {
+  background-image: url(top_image4.jpg);
+}
+.image5 {
+  background-image: url(top_image5.jpg);
+}
+
+.nav-link, .nav-text {
+ list-style: none;
+ color: #FF6633;
+ font-size: 12px;
+}
+
+.nav-link:hover {
+ color: #996600;
+}
+
+html{
+ position: relative;
+ min-height: 100%;
+}
+
+footer{
+ width: 100%;
+ height: 80px;
+ position: absolute;
+ bottom: 0;
+ background-color: white;
+}
+
+nav{
+ z-index: 100;
+}
+
+.nav-button{
+ background-color: white;
+ border-color: #FF6633;
+}
+
+.nav-button:hover{
+ background-color: #FFFFCC;
+}
+
+.fa-bars{
+ color: #FF6633;
+}
+
+.item-image{
+ overflow: hidden;
+ cursor: pointer;
+}
+
+.item-image:hover img{
+  transform: scale(1.2);
+  transition-duration: 0.5s;
+}
+
+.btn-block {
+ height: 40px
+}
+
+.btn-success {
+ transition: .3s;
+ border-radius: 0px;
+ outline: 1px solid;
+ outline-color: #288c66;
+ outline-offset: 0px;
+}
+
+.btn-primary {
+ transition: .3s;
+ border-radius: 0px;
+ outline: 1px solid;
+ outline-color: #00608d;
+ outline-offset: 0px;
+}
+
+.btn-danger {
+ transition: .3s;
+ border-radius: 0px;
+ outline: 1px solid;
+ outline-color: #ea5550;
+ outline-offset: 0px;
+}
+
+.btn-success:hover {
+  background: #7cfc00;
+  animation: light .8s infinite;
+}
+
+.btn-primary:hover {
+ background: #00ffff;
+ animation: light .8s infinite;
+}
+
+.btn-danger:hover {
+ background: #ff0000;
+ animation: light .8s infinite;
+}
+
+@keyframes light {
+  100% {
+    outline-color: transparent;
+    outline-offset: 12px;
+  }
+}

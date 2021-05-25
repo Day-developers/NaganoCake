@@ -1,0 +1,36 @@
+<% if @datas.empty? %>
+  <h2 class="text-center pt-5">該当する商品はありません</h2>
+<% else %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 px-sm-0">
+      <h2 class="font-weight-bold mt-5 mb-3"><i class="fas fa-search-plus"></i>ジャンル検索一覧</h2>
+    </div>
+  </div>
+  <div class="row">
+  <div class="d-flex flex-row flex-wrap">
+    <% @datas.each do |data| %>
+    <div class="card-deck mb-5 mr-2", style="width:25%">
+      <div class="card">
+        <div class ="item-image">
+          <%= link_to item_path(data.id) do %>
+            <p class="img card-img-top"><%= attachment_image_tag data, :image, width: "100%", format: "jpeg", fallback: "no_image.jpg" %></p>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <p class="card-title font-weight-bold"><%= data.name %></p>
+          <% if data.is_active == true %>
+            <p class="item-price"><%= ((data.price*1.10).to_i).to_s(:delimited) %>円(税込）</p>
+          <% else %>
+            <p class="text-danger font-weight-bold">Sold out</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+  <%= paginate @datas %>
+</div>
+<% end %>
+

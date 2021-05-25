@@ -1,0 +1,44 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-sm-12 px-sm-0 mb-3">
+      <p id="success", class = "text-success mt-3"><%= flash[:success] %></p>
+      <h2 class = "font-weight-bold mt-5 mb-5 mx-3"><i class="fas fa-address-book"></i>配送先登録 / 一覧</h2>
+      <%= form_with model: @address, url: addresses_path, remote: true do |f| %>
+        <%= render 'layouts/error', obj: @address %>
+        
+      <div class = "field">
+        <%= f.label "郵便番号（ハイフンなし）", class: "col-3" %>
+        <%= f.text_field :postal_code, autocomplete: "postal_code", placeholder: "0000000", class: "col-3" %>
+      </div>
+
+      <div class = "field">
+        <%= f.label "住所", class: "col-3" %>
+        <%= f.text_field :address, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0", class: "col-6" %>
+      </div>
+
+      <div class = "field">
+        <%= f.label "宛名", class: "col-3" %>
+        <%= f.text_field :name, autocomplete: "name", placeholder: "令和道子", class: "col-3 mr-5" %>
+        <%= f.submit "新規登録", class: "btn btn-success col-2 ml-3" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-sm-10 px-sm-0">
+      <table class = "table table-bordered mt-5">
+        <thead class = "table-light">
+          <tr >
+            <th class = "border-dark" style="width: 10%">郵便番号</th>
+            <th class = "border-dark" style="width: 40%">住所</th>
+            <th class = "border-dark" style="width: 25%">宛名</th>
+            <th class = "border-dark" style="width: 25%"></th>
+          </tr>
+        </thead>
+        <tbody id="address">
+          <%= render 'public/addresses/index', addresses: @addresses %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

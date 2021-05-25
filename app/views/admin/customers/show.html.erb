@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 my-5">
+      <h2 class="mb-5 font-weight-bold"><i class="far fa-user"></i><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h2>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td class="border-dark table-light" style="width: 40%">会員ID</td>
+            <td class="border-dark"><%= @customer.id %></td>
+          </tr>
+          <tr>
+            <td class="border-dark table-light" style="width: 40%">氏名</td>
+            <td class="border-dark"><%= @customer.last_name %>　<%= @customer.first_name %></td>
+          </tr>
+          <tr>
+            <td class="border-dark table-light" style="width: 40%">フリガナ</td>
+            <td class="border-dark"><%= @customer.kana_last_name %>　<%= @customer.kana_first_name %></td>
+          </tr>
+          <tr>
+            <td class="border-dark table-light" style="width: 40%">郵便番号</td>
+            <td class="border-dark"><%= @customer.postal_code %></td>
+          </tr>
+          <tr>
+            <td class="border-dark table-light" style="width: 40%">住所</td>
+            <td class="border-dark"><%= @customer.address %></td>
+          </tr>
+          <tr>
+            <td class="border-dark table-light" style="width: 40%">電話番号</td>
+            <td class="border-dark"><%= @customer.phone_number %></td>
+          </tr>
+          <tr>
+            <td class="border-dark table-light" style="width: 40%">メールアドレス</td>
+            <td class="border-dark"><%= @customer.email %></td>
+          </tr>
+          <tr>
+            <td class="border-dark table-light" style="width: 40%">会員ステータス</td>
+            <td class="border-dark">
+              <% if @customer.is_deleted == false %>
+                <p class="text-success">有効</p>
+              <% else %>
+                <p class="text-secondary">退会</p>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success mr-4 mt-3" %>
+      <%= link_to "注文履歴一覧を見る", admin_root_path, class: "btn btn-primary mt-3" %>
+    </div>
+  </div>
+</div>

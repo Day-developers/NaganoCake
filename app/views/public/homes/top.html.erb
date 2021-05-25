@@ -1,0 +1,27 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-sm-12 my-5">
+      <p class = "text-success"><%= flash[:success] %></p>
+      <div class = "text-box mx-auto">
+        <p class = "top-text font-weight-bold">
+          ようこそ、ながのCAKEへ！<br />
+          このサイトは、ケーキ販売のECサイトになります！<br />
+          会員でない方も商品の閲覧はできますが、<br />
+          購入には会員登録が必要になります。
+        </p>
+        <div id="container">
+          <div id="theTarget">
+            <div class="image1"></div>
+            <div class="image2"></div>
+            <div class="image3"></div>
+            <div class="image4"></div>
+            <div class="image5"></div>
+          </div>
+        </div>
+      </div>
+      <h2 class = "font-weight-bold mt-5 mb-4"><i class="far fa-plus-square"></i>新着商品</h2>
+      <%= render 'public/items/new_items', items: @items %>
+      <p class = "text-right"><%= link_to "全ての商品を見る⇒", items_path , class: "text-dark" %></p>
+    </div>
+  </div>
+</div>

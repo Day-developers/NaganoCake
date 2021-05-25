@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 mx-auto">
+      <h2 class="mt-5 font-weight-bold">注文履歴詳細</h2>
+
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td>購入者</td>
+            <td><%= @customer.last_name + @customer.first_name %></td>
+          </tr>
+
+          <tr>
+            <td>注文日</td>
+            <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+          </tr>
+
+          <tr>
+            <td>配送先</td>
+            <td>
+              〒<%= @order.postal_code %>
+              <%= @order.address %><br />
+              <%= @order.name %>
+            </td>
+          </tr>
+
+          <tr>
+            <td>支払方法</td>
+            <td><%= @order.payment_method %></td>
+          </tr>
+
+          <tr>
+            <td>注文ステータス</td>
+            <td id="ajax-status">
+              <%= render "status", order: @order %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="d-flex", id="ajax-making-status">
+        <%= render "making_status", order_item: @order_items, order: @order %>
+      </div>
+
+    </div>
+  </div>
+</div>
