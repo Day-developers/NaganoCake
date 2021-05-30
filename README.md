@@ -7,7 +7,7 @@
 ## アプリトップページ
 ![horizontal_on_white_by_logaster (1)](https://user-images.githubusercontent.com/78731929/119217715-eb857a00-bb16-11eb-8304-45df2318e98a.png)  
 ![top](https://user-images.githubusercontent.com/78731929/119260122-54025300-bc0c-11eb-8440-8e6b6ed50267.gif)  
-![top_item](https://user-images.githubusercontent.com/78731929/119260117-4f3d9f00-bc0c-11eb-9f9f-de81f35a3408.gif)
+![top_item1](https://user-images.githubusercontent.com/78731929/120087650-af5ca580-c124-11eb-93d8-be89c6212336.gif)
 
 
 ## アプリケーション概要
